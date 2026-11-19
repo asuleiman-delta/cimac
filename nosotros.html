@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preload" href="assets/fonts/CamptonBook.otf" as="font" type="font/otf" crossorigin="anonymous">
+<link rel="preload" href="assets/fonts/CamptonMedium.otf" as="font" type="font/otf" crossorigin="anonymous">
+<link rel="preload" href="assets/fonts/CamptonSemiBold.otf" as="font" type="font/otf" crossorigin="anonymous">
+<link rel="preload" href="assets/fonts/EuclidFlexSemiBold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="assets/fonts/EuclidFlexBold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="stylesheet" href="_ds/industry-5e022a0e-b71f-4223-b93c-179ce59a54f1/styles.css">
+<script src="_ds/industry-5e022a0e-b71f-4223-b93c-179ce59a54f1/_ds_bundle.js"></script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+@font-face{font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/EuclidFlexMedium.ttf') format('truetype');font-weight:500;font-display:block}
+@font-face{font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/EuclidFlexSemiBold.ttf') format('truetype');font-weight:600;font-display:block}
+@font-face{font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/EuclidFlexBold.ttf') format('truetype');font-weight:700;font-display:block}
+@font-face{font-family:'Campton','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/CamptonBook.otf') format('opentype');font-weight:400;font-display:block}
+@font-face{font-family:'Campton','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/CamptonMedium.otf') format('opentype');font-weight:500;font-display:block}
+@font-face{font-family:'Campton','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/CamptonSemiBold.otf') format('opentype');font-weight:600;font-display:block}
+body{margin:0;background:#ffffff;color:#1e1728;font-family:'Campton','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#654a9e;text-decoration:none;transition:color .25s ease}
+a:hover{color:#fc4425}
+::selection{background:rgba(252,68,37,.22)}
+:focus-visible{outline:2px solid #fc4425;outline-offset:3px}
+input::placeholder{color:rgba(255,255,255,.45);font-family:'Campton'}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes linkIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(-2%,3%,0) rotate(8deg)}}
+</style>
+</helmet>
+
+<div ref="{{ root }}" style="position:relative;width:100%;overflow:clip">
+
+  <header data-header="" style="position:fixed;top:0;left:0;right:0;z-index:60;transition:background .35s ease,border-color .35s ease;border-bottom:1px solid transparent">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px clamp(20px,5vw,80px)">
+      <a href="index.html" style="display:block;flex:0 0 auto">
+        <img src="assets/cimac-logo-slogan-white.png" alt="CIMAC · Centro de Innovación en Tecnología de Materiales" style="height:clamp(40px,3.6vw,52px);width:auto;display:block">
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex;align-items:center;gap:clamp(14px,1.9vw,32px)">
+          <a href="index.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,.86)" style-hover="color:#ffffff">Inicio</a>
+          <a href="que-hacemos.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,.86)" style-hover="color:#ffffff">¿Qué hacemos?</a>
+          <a href="index.html#proyectos" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,.86)" style-hover="color:#ffffff">Proyectos</a>
+          <a href="nosotros.html" aria-current="page" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:#ffffff;padding-bottom:4px;border-bottom:1px solid #fc4425">Nosotros</a>
+          <a href="noticias-y-eventos.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,.86)" style-hover="color:#ffffff">Noticias y Eventos</a>
+        </nav>
+      </sc-if>
+      <div style="display:flex;align-items:center;gap:10px;flex:0 0 auto">
+        <a data-cta="" href="contacto.html" style="position:relative;overflow:hidden;display:inline-flex;align-items:center;background:#ffffff;color:#1e1728;border:1px solid #ffffff;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;padding:13px 22px;border-radius:999px;white-space:nowrap;transition:color .35s ease,border-color .4s ease"><span data-cta-sweep="" style="position:absolute;inset:0;background:#fc4425;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none"></span><span style="position:relative;z-index:1">Contáctanos</span></a>
+        <button onClick="{{ toggleMenu }}" aria-label="Menú" style="display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:46px;height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.28);background:transparent;border-radius:999px;cursor:pointer;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#ffffff;background:rgba(255,255,255,.08)">
+          <span style="display:block;height:1.5px;background:#ffffff;border-radius:2px"></span>
+          <span style="display:block;height:1.5px;background:#ffffff;border-radius:2px"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <sc-if value="{{ menu }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:70;background:#16111f;display:flex;flex-direction:column;padding:clamp(20px,5vw,80px);animation:linkIn .4s both">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <img src="assets/cimac-logo-slogan-white.png" alt="CIMAC" style="height:44px;width:auto">
+        <button onClick="{{ toggleMenu }}" aria-label="Cerrar" style="width:46px;height:34px;border:1px solid rgba(255,255,255,.28);background:transparent;border-radius:999px;color:#ffffff;font-size:20px;cursor:pointer;font-family:'Campton','Helvetica Neue',Arial,sans-serif">×</button>
+      </div>
+      <nav style="margin-top:auto;margin-bottom:auto;display:flex;flex-direction:column;gap:clamp(6px,1.4vh,14px)">
+        <a href="que-hacemos.html" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#ffffff;animation:linkIn .55s both;animation-delay:.05s" style-hover="color:#fc4425">¿Qué hacemos?</a>
+        <a href="index.html#proyectos" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#ffffff;animation:linkIn .55s both;animation-delay:.11s" style-hover="color:#fc4425">Proyectos</a>
+        <a href="nosotros.html" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#fc4425;animation:linkIn .55s both;animation-delay:.17s">Nosotros</a>
+        <a href="noticias-y-eventos.html" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#ffffff;animation:linkIn .55s both;animation-delay:.23s" style-hover="color:#fc4425">Noticias y Eventos</a>
+        <a href="contacto.html" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#ffffff;animation:linkIn .55s both;animation-delay:.29s" style-hover="color:#fc4425">Contacto</a>
+      </nav>
+      <div style="display:flex;flex-wrap:wrap;gap:24px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;color:rgba(255,255,255,.5);animation:linkIn .6s both;animation-delay:.4s">
+        <span>contacto.cimac@usach.cl</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <section data-hero="" data-screen-label="Hero" style="position:relative;overflow:hidden;background:#1e1728;color:#ffffff;padding:clamp(140px,15vw,210px) clamp(20px,5vw,80px) clamp(64px,7vw,104px)">
+    <div style="position:relative;max-width:1500px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(36px,5vw,88px);align-items:center">
+      <div style="display:flex;flex-direction:column;gap:clamp(22px,2.4vw,32px)">
+        <nav aria-label="Ruta" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:13px;color:rgba(255,255,255,.5);animation:rise .8s cubic-bezier(.16,1,.3,1) both">
+          <a href="index.html" style="color:rgba(255,255,255,.5)" style-hover="color:#ffffff">Inicio</a>
+          <span aria-hidden="true">/</span>
+          <span style="color:rgba(255,255,255,.82)">Nosotros</span>
+        </nav>
+        <h1 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(48px,7vw,112px);line-height:.98;letter-spacing:-.03em;animation:rise .9s cubic-bezier(.16,1,.3,1) both;animation-delay:.08s">Nosotros</h1>
+        <p style="margin:0;max-width:48ch;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(18px,1.45vw,22px);line-height:1.55;color:rgba(255,255,255,.76);text-wrap:pretty;animation:rise .9s cubic-bezier(.16,1,.3,1) both;animation-delay:.16s">Somos un centro de innovación que articula ciencia, tecnología y diseño para desarrollar y transferir soluciones en materiales y sistemas para el entorno construido.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(8px,1.4vw,18px);animation:rise .9s cubic-bezier(.16,1,.3,1) both;animation-delay:.24s">
+          <a href="#mision" data-goto="mision" onClick="{{ goTo }}" style="white-space:nowrap;padding:11px 18px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#ffffff;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#fc4425;background:rgba(252,68,37,.12)">Misión</a>
+          <a href="#historia" data-goto="historia" onClick="{{ goTo }}" style="white-space:nowrap;padding:11px 18px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#ffffff;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#fc4425;background:rgba(252,68,37,.12)">Historia</a>
+          <a href="#ecosistema" data-goto="ecosistema" onClick="{{ goTo }}" style="white-space:nowrap;padding:11px 18px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#ffffff;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#fc4425;background:rgba(252,68,37,.12)">Ecosistema</a>
+          <a href="#lineas" data-goto="lineas" onClick="{{ goTo }}" style="white-space:nowrap;padding:11px 18px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#ffffff;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#fc4425;background:rgba(252,68,37,.12)">Líneas</a>
+          <a href="#equipo" data-goto="equipo" onClick="{{ goTo }}" style="white-space:nowrap;padding:11px 18px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#ffffff;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#fc4425;background:rgba(252,68,37,.12)">Equipo</a>
+        </div>
+      </div>
+      <div style="position:relative;aspect-ratio:1;max-width:620px;width:100%;justify-self:end;border:1px solid rgba(255,255,255,.14);animation:rise 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.28s">
+        <img src="assets/nosotros/grafica-circular.jpg" alt="Las cuatro líneas de CIMAC en un ciclo circular" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+    </div>
+  </section>
+
+  <section id="mision" data-screen-label="Misión" style="background:#ffffff;padding:clamp(80px,10vw,160px) clamp(20px,5vw,80px)">
+    <div data-reveal="" style="max-width:1500px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(20px,4vw,72px);align-items:start">
+      <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a58a80">01 · Misión</p>
+      <div style="grid-column:span 3;min-width:0;display:flex;flex-direction:column;gap:clamp(24px,3vw,40px)">
+        <p style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(28px,3.4vw,52px);line-height:1.12;letter-spacing:-.022em;color:#1e1728;text-wrap:pretty">Desarrollar e impulsar soluciones innovadoras para el entorno construido, mediante la investigación, el diseño y la aplicación de nuevos materiales, componentes y sistemas constructivos para una construcción más sostenible y circular.</p>
+        <span aria-hidden="true" style="display:block;width:48px;height:2px;background:#fc4425"></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="historia" data-screen-label="Historia" style="position:relative;overflow:hidden;background:#16111f;color:#ffffff;padding:clamp(72px,9vw,140px) clamp(20px,5vw,80px)">
+    <div data-reveal="" style="position:relative;max-width:1500px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(36px,5vw,88px);align-items:center">
+      <div style="position:relative;aspect-ratio:4/3;border:1px solid rgba(255,255,255,.14)">
+        <img src="assets/noticias/15.jpg" alt="Mesa de trabajo de CIMAC con actores del sector construcción" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#c9b0a6">02 · Historia</p>
+        <h2 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(34px,4.2vw,62px);line-height:1.02;letter-spacing:-.025em;text-wrap:balance">Un centro tecnológico para la construcción circular</h2>
+        <p style="margin:0;max-width:56ch;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.65;color:rgba(255,255,255,.78);text-wrap:pretty">El Centro de Innovación en Tecnología y Diseño de Materiales para el Entorno Construido (CIMAC) es patrocinado por la Universidad de Santiago de Chile (USACH) y financiado por la Agencia Nacional de Investigación y Desarrollo (ANID).</p>
+        <p style="margin:0;max-width:56ch;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.65;color:rgba(255,255,255,.62);text-wrap:pretty">Articula a universidades, centros tecnológicos, empresas e instituciones públicas en torno a cuatro líneas de investigación, desarrollo, innovación y transferencia tecnológica.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(12px,2vw,24px);border-top:1px solid rgba(255,255,255,.14)">
+          <div style="padding:22px 16px 0 0"><p data-count="28" style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(38px,4vw,60px);line-height:1;letter-spacing:-.03em">28</p><p style="margin:10px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;color:rgba(255,255,255,.6)">Investigadores/as</p></div>
+          <div style="padding:22px 16px 0;border-left:1px solid rgba(255,255,255,.1)"><p style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(38px,4vw,60px);line-height:1;letter-spacing:-.03em">6</p><p style="margin:10px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;color:rgba(255,255,255,.6)">Instituciones asociadas</p></div>
+          <div style="padding:22px 0 0 16px;border-left:1px solid rgba(255,255,255,.1)"><p style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(38px,4vw,60px);line-height:1;letter-spacing:-.03em">4</p><p style="margin:10px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;color:rgba(255,255,255,.6)">Líneas de I+D+i+TT</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ecosistema" data-screen-label="Ecosistema" style="background:#f6f5f9;padding:clamp(72px,9vw,140px) clamp(20px,5vw,80px)">
+    <div style="max-width:1500px;margin:0 auto">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,72px);align-items:flex-end">
+        <div style="flex:2 1 560px;min-width:0">
+          <p style="margin:0 0 16px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a58a80">03 · Ecosistema</p>
+          <h2 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(34px,4.2vw,62px);line-height:1.02;letter-spacing:-.025em;color:#1e1728;text-wrap:balance">Academia, industria y sector público</h2>
+        </div>
+        <p style="flex:1 1 340px;margin:0;max-width:56ch;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.65;color:#4a4256;text-wrap:pretty">CIMAC fortalece los espacios de colaboración entre academia, sector productivo e instituciones públicas, impulsando una agenda de innovación orientada a los desafíos de la construcción.</p>
+      </div>
+
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:clamp(24px,3vw,40px);margin-top:clamp(40px,5vw,72px)">
+        <div style="flex:1 1 180px;max-width:100%;display:flex;flex-direction:column">
+          <p style="margin:0 0 14px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8a8299;min-height:2.6em;display:flex;align-items:flex-end">Institución beneficiaria</p>
+          <div style="display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid #e2ddec;border-left:1px solid #e2ddec"><span style="background:#ffffff;border-right:1px solid #e2ddec;border-bottom:1px solid #e2ddec;height:clamp(110px,10vw,150px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/usach-white.png" alt="USACH" loading="lazy" style="max-width:86%;max-height:54px;width:auto;height:auto;object-fit:contain;filter:brightness(0);opacity:.75"></span></div>
+        </div>
+        <div style="flex:5 1 560px;max-width:100%;display:flex;flex-direction:column">
+          <p style="margin:0 0 14px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8a8299;min-height:2.6em;display:flex;align-items:flex-end">Instituciones asociadas</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));border-top:1px solid #e2ddec;border-left:1px solid #e2ddec">
+            <span style="background:#ffffff;border-right:1px solid #e2ddec;border-bottom:1px solid #e2ddec;height:clamp(110px,10vw,150px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/logo-utem.png" alt="UTEM" loading="lazy" style="max-width:100%;height:54px;width:auto;object-fit:contain;opacity:.75"></span>
+            <span style="background:#ffffff;border-right:1px solid #e2ddec;border-bottom:1px solid #e2ddec;height:clamp(110px,10vw,150px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/logo-uai.png" alt="Universidad Adolfo Ibáñez" loading="lazy" style="max-width:100%;height:46px;width:auto;object-fit:contain;opacity:.75"></span>
+            <span style="background:#ffffff;border-right:1px solid #e2ddec;border-bottom:1px solid #e2ddec;height:clamp(110px,10vw,150px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/logo-udec.png" alt="Universidad de Concepción" loading="lazy" style="max-width:100%;height:52px;width:auto;object-fit:contain;opacity:.75"></span>
+            <span style="background:#ffffff;border-right:1px solid #e2ddec;border-bottom:1px solid #e2ddec;height:clamp(110px,10vw,150px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/logo-ctec.png" alt="CTEC" loading="lazy" style="max-width:100%;height:42px;width:auto;object-fit:contain;opacity:.75"></span>
+            <span style="background:#ffffff;border-right:1px solid #e2ddec;border-bottom:1px solid #e2ddec;height:clamp(110px,10vw,150px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/logo-labva.png" alt="LABVA" loading="lazy" style="max-width:100%;height:70px;width:auto;object-fit:contain;opacity:.75"></span>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="" style="margin-top:clamp(40px,5vw,72px)">
+        <p style="margin:0 0 14px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8a8299">Empresas que colaboran</p>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;padding:0 1px 1px 0">
+          <span style="flex:0 0 max(150px,calc(100% / 6));box-sizing:border-box;margin:0 -1px -1px 0;background:#ffffff;border:1px solid #e2ddec;height:clamp(96px,8vw,124px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/empresas/c2025_n.png" alt="Construye 2025" loading="lazy" style="max-width:70%;max-height:50px;width:auto;object-fit:contain;opacity:.7"></span>
+          <span style="flex:0 0 max(150px,calc(100% / 6));box-sizing:border-box;margin:0 -1px -1px 0;background:#ffffff;border:1px solid #e2ddec;height:clamp(96px,8vw,124px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/empresas/gb_n.png" alt="Gestión B" loading="lazy" style="max-width:70%;max-height:58px;width:auto;object-fit:contain;opacity:.7"></span>
+          <span style="flex:0 0 max(150px,calc(100% / 6));box-sizing:border-box;margin:0 -1px -1px 0;background:#ffffff;border:1px solid #e2ddec;height:clamp(96px,8vw,124px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/empresas/aoa_n.png" alt="AOA" loading="lazy" style="max-width:54%;max-height:34px;width:auto;object-fit:contain;opacity:.7"></span>
+          <span style="flex:0 0 max(150px,calc(100% / 6));box-sizing:border-box;margin:0 -1px -1px 0;background:#ffffff;border:1px solid #e2ddec;height:clamp(96px,8vw,124px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/empresas/ebp_n.png" alt="EBP" loading="lazy" style="max-width:70%;max-height:44px;width:auto;object-fit:contain;opacity:.7"></span>
+          <span style="flex:0 0 max(150px,calc(100% / 6));box-sizing:border-box;margin:0 -1px -1px 0;background:#ffffff;border:1px solid #e2ddec;height:clamp(96px,8vw,124px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/empresas/pjh_n.png" alt="Plásticos" loading="lazy" style="max-width:70%;max-height:40px;width:auto;object-fit:contain;opacity:.7"></span>
+          <span style="flex:0 0 max(150px,calc(100% / 6));box-sizing:border-box;margin:0 -1px -1px 0;background:#ffffff;border:1px solid #e2ddec;height:clamp(96px,8vw,124px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/empresas/volcan_n.png" alt="Volcán" loading="lazy" style="max-width:70%;max-height:40px;width:auto;object-fit:contain;opacity:.7"></span>
+          <span style="flex:0 0 max(150px,calc(100% / 6));box-sizing:border-box;margin:0 -1px -1px 0;background:#ffffff;border:1px solid #e2ddec;height:clamp(96px,8vw,124px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/empresas/fch_n.png" alt="Fundación Chile" loading="lazy" style="max-width:50%;max-height:36px;width:auto;object-fit:contain;opacity:.7"></span>
+          <span style="flex:0 0 max(150px,calc(100% / 6));box-sizing:border-box;margin:0 -1px -1px 0;background:#ffffff;border:1px solid #e2ddec;height:clamp(96px,8vw,124px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/empresas/cu_n.png" alt="Città Urbana" loading="lazy" style="max-width:70%;max-height:58px;width:auto;object-fit:contain;opacity:.7"></span>
+          <span style="flex:0 0 max(150px,calc(100% / 6));box-sizing:border-box;margin:0 -1px -1px 0;background:#ffffff;border:1px solid #e2ddec;height:clamp(96px,8vw,124px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/empresas/crspa_n.png" alt="Caucho" loading="lazy" style="max-width:70%;max-height:46px;width:auto;object-fit:contain;opacity:.7"></span>
+          <span style="flex:0 0 max(150px,calc(100% / 6));box-sizing:border-box;margin:0 -1px -1px 0;background:#ffffff;border:1px solid #e2ddec;height:clamp(96px,8vw,124px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/empresas/plastico_n.png" alt="Plástico" loading="lazy" style="max-width:70%;max-height:40px;width:auto;object-fit:contain;opacity:.7"></span>
+          <span style="flex:0 0 max(150px,calc(100% / 6));box-sizing:border-box;margin:0 -1px -1px 0;background:#ffffff;border:1px solid #e2ddec;height:clamp(96px,8vw,124px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/empresas/da_n.png" alt="Desafío A" loading="lazy" style="max-width:70%;max-height:50px;width:auto;object-fit:contain;opacity:.7"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lineas" data-screen-label="Líneas" style="background:#ffffff;padding:clamp(72px,9vw,140px) clamp(20px,5vw,80px)">
+    <div style="max-width:1500px;margin:0 auto">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px">
+        <div>
+          <p style="margin:0 0 16px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a58a80">04 · Líneas</p>
+          <h2 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(34px,4.2vw,62px);line-height:1.02;letter-spacing:-.025em;color:#1e1728">Líneas de I+D+i+TT</h2>
+        </div>
+        <a data-cta="" href="que-hacemos.html#investigacion" style="position:relative;overflow:hidden;display:inline-flex;align-items:center;background:transparent;color:#1e1728;border:1px solid rgba(30,23,40,.22);font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;padding:14px 24px;border-radius:999px;transition:color .35s ease,border-color .4s ease"><span data-cta-sweep="" style="position:absolute;inset:0;background:#fc4425;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none"></span><span style="position:relative;z-index:1">Ver investigación</span></a>
+      </div>
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1px;background:#e6e2ee;border:1px solid #e6e2ee;margin-top:clamp(36px,4.5vw,64px)">
+        <a data-hcard="" href="que-hacemos.html#investigacion" style="position:relative;overflow:hidden;display:flex;flex-direction:column;gap:14px;background:#ffffff;padding:clamp(22px,2.4vw,34px);min-height:clamp(220px,20vw,280px);color:#1e1728">
+          <span aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:3px;background:#654a9e"></span>
+          <span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;color:#654a9e">L01 · MPS</span>
+          <span data-htitle="" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(20px,1.6vw,24px);line-height:1.15;letter-spacing:-.015em;color:#1e1728;text-wrap:pretty;transition:color .35s ease">Materias primas secundarias (MPS)</span>
+          <span style="margin-top:auto;display:flex;align-items:center;gap:12px"><img src="assets/team/opt/hugo-perez.jpg" alt="Hugo Pérez Herrera" loading="lazy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center 20%;border:1px solid #e6e2ee;flex:0 0 auto"><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;color:#1e1728">Hugo Pérez Herrera</span><span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:#8a8299">Líder de línea</span></span></span>
+          <span style="position:relative;display:block;height:1px;background:#e6e2ee;overflow:hidden"><span data-hfill="" style="position:absolute;top:0;bottom:0;left:0;width:0%;background:#fc4425;transition:width .5s ease-out"></span></span>
+        </a>
+        <a data-hcard="" href="que-hacemos.html#investigacion" style="position:relative;overflow:hidden;display:flex;flex-direction:column;gap:14px;background:#ffffff;padding:clamp(22px,2.4vw,34px);min-height:clamp(220px,20vw,280px);color:#1e1728">
+          <span aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:3px;background:#9a9a5e"></span>
+          <span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;color:#7c7c45">L02 · CBB</span>
+          <span data-htitle="" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(20px,1.6vw,24px);line-height:1.15;letter-spacing:-.015em;color:#1e1728;text-wrap:pretty;transition:color .35s ease">Componentes biobasados (CBB)</span>
+          <span style="margin-top:auto;display:flex;align-items:center;gap:12px"><img src="assets/team/opt/macarena-valenzuela.jpg" alt="Macarena Valenzuela Zubiaur" loading="lazy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center 20%;border:1px solid #e6e2ee;flex:0 0 auto"><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;color:#1e1728">Macarena Valenzuela Zubiaur</span><span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:#8a8299">Líder de línea</span></span></span>
+          <span style="position:relative;display:block;height:1px;background:#e6e2ee;overflow:hidden"><span data-hfill="" style="position:absolute;top:0;bottom:0;left:0;width:0%;background:#fc4425;transition:width .5s ease-out"></span></span>
+        </a>
+        <a data-hcard="" href="que-hacemos.html#investigacion" style="position:relative;overflow:hidden;display:flex;flex-direction:column;gap:14px;background:#ffffff;padding:clamp(22px,2.4vw,34px);min-height:clamp(220px,20vw,280px);color:#1e1728">
+          <span aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:3px;background:#a58a80"></span>
+          <span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;color:#8a6c62">L03 · LCPR</span>
+          <span data-htitle="" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(20px,1.6vw,24px);line-height:1.15;letter-spacing:-.015em;color:#1e1728;text-wrap:pretty;transition:color .35s ease">Logística circular y procesos de reciclaje</span>
+          <span style="margin-top:auto;display:flex;align-items:center;gap:12px"><img src="assets/team/opt/ivan-derpich.jpg" alt="Iván Derpich Contreras" loading="lazy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center 20%;border:1px solid #e6e2ee;flex:0 0 auto"><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;color:#1e1728">Iván Derpich Contreras</span><span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:#8a8299">Líder de línea</span></span></span>
+          <span style="position:relative;display:block;height:1px;background:#e6e2ee;overflow:hidden"><span data-hfill="" style="position:absolute;top:0;bottom:0;left:0;width:0%;background:#fc4425;transition:width .5s ease-out"></span></span>
+        </a>
+        <a data-hcard="" href="que-hacemos.html#investigacion" style="position:relative;overflow:hidden;display:flex;flex-direction:column;gap:14px;background:#ffffff;padding:clamp(22px,2.4vw,34px);min-height:clamp(220px,20vw,280px);color:#1e1728">
+          <span aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:3px;background:#fc4425"></span>
+          <span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;color:#d63716">L04 · IDSS</span>
+          <span data-htitle="" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(20px,1.6vw,24px);line-height:1.15;letter-spacing:-.015em;color:#1e1728;text-wrap:pretty;transition:color .35s ease">Innovación y desarrollo de sistemas constructivos (IDSS)</span>
+          <span style="margin-top:auto;display:flex;align-items:center;gap:12px"><img src="assets/team/opt/pavlo-santander.jpg" alt="Pavlo Santander Tapia" loading="lazy" style="width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center 20%;border:1px solid #e6e2ee;flex:0 0 auto"><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;color:#1e1728">Pavlo Santander Tapia</span><span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:#8a8299">Líder de línea</span></span></span>
+          <span style="position:relative;display:block;height:1px;background:#e6e2ee;overflow:hidden"><span data-hfill="" style="position:absolute;top:0;bottom:0;left:0;width:0%;background:#fc4425;transition:width .5s ease-out"></span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="equipo" data-screen-label="Equipo" style="background:#16111f;color:#ffffff;padding:clamp(72px,9vw,140px) clamp(20px,5vw,80px)">
+    <div style="max-width:1500px;margin:0 auto">
+      <div data-reveal="">
+        <p style="margin:0 0 16px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a08fc4">05 · Equipo</p>
+        <h2 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(38px,5vw,76px);line-height:1;letter-spacing:-.028em">Nuestro equipo</h2>
+      </div>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <nav data-team-nav="" aria-label="Grupos del equipo" style="position:sticky;top:76px;z-index:20;margin:28px calc(-1 * clamp(20px,5vw,80px)) 0;padding:10px clamp(20px,5vw,80px);background:rgba(22,17,31,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1);display:flex;gap:8px;overflow-x:auto;scrollbar-width:none">
+          <sc-for list="{{ teamNav }}" as="g" hint-placeholder-count="5">
+            <button type="button" data-g="{{ g.key }}" onClick="{{ goTeam }}" aria-current="{{ g.current }}" style="flex:0 0 auto;min-height:36px;padding:8px 14px;border-radius:999px;border:1px solid {{ g.border }};background:{{ g.bg }};color:{{ g.color }};font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:13px;white-space:nowrap;cursor:pointer;transition:background .25s ease,color .25s ease,border-color .25s ease">{{ g.label }}</button>
+          </sc-for>
+        </nav>
+      </sc-if>
+      <div data-team-group="dir" style="scroll-margin-top:150px;display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-top:clamp(48px,6vw,88px);padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.14)"><h3 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,2vw,30px);letter-spacing:-.018em">Dirección</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));border-left:1px solid rgba(255,255,255,.1)">
+        <sc-for list="{{ direccion }}" as="p" hint-placeholder-count="4">
+          <article data-hcard="" style="position:relative;overflow:hidden;background:#16111f;border-right:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);padding:clamp(18px,1.8vw,26px);display:flex;flex-direction:column">
+            <span data-hbar="" style="position:absolute;top:0;left:0;width:2px;height:100%;background:#654a9e;transform:scaleY(0);transform-origin:top;transition:transform .5s ease-out;pointer-events:none;z-index:1"></span>
+            <span style="display:block;position:relative;width:100%;aspect-ratio:1;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);overflow:hidden"><img data-hzoom="" src="{{ p.img }}" alt="{{ p.name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:{{ p.pos }};display:block;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
+            <span style="position:relative;display:block;height:1px;background:rgba(255,255,255,.16);overflow:hidden;margin-top:18px"><span data-hfill="" style="position:absolute;top:0;bottom:0;left:0;width:0%;background:#654a9e;transition:width .5s ease-out"></span></span>
+            <h4 style="margin:16px 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(17px,1.4vw,19px);line-height:1.2;text-wrap:pretty">{{ p.name }}</h4>
+            <p style="margin:8px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.5;color:rgba(255,255,255,.6)">{{ p.role }}</p>
+            <div style="display:flex;gap:4px;margin-top:12px">
+              <a href="{{ p.li }}" target="_blank" rel="noopener" aria-label="LinkedIn de {{ p.name }}" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;color:rgba(255,255,255,.55);transition:color .3s ease" style-hover="color:#8a6fc4"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 5.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.2 8.5h3.5V21H3.2V8.5zm5.6 0h3.35v1.7h.05c.47-.87 1.6-1.79 3.3-1.79 3.53 0 4.18 2.24 4.18 5.15V21h-3.5v-6.2c0-1.48-.03-3.38-2.08-3.38-2.09 0-2.4 1.6-2.4 3.27V21H8.8V8.5z"></path></svg></a>
+              <sc-if value="{{ p.mail }}" hint-placeholder-val="{{ false }}"><a href="mailto:{{ p.mail }}" aria-label="Correo de {{ p.name }}" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;color:rgba(255,255,255,.55);transition:color .3s ease" style-hover="color:#8a6fc4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 6.5 8.5 6 8.5-6"></path></svg></a></sc-if>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+      <div data-team-group="lid" style="scroll-margin-top:150px;display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-top:clamp(48px,6vw,88px);padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.14)"><h3 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,2vw,30px);letter-spacing:-.018em">Líderes de línea</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));border-left:1px solid rgba(255,255,255,.1)">
+        <sc-for list="{{ lideres }}" as="p" hint-placeholder-count="4">
+          <article data-hcard="" style="position:relative;overflow:hidden;background:#16111f;border-right:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);padding:clamp(18px,1.8vw,26px);display:flex;flex-direction:column">
+            <span data-hbar="" style="position:absolute;top:0;left:0;width:2px;height:100%;background:#654a9e;transform:scaleY(0);transform-origin:top;transition:transform .5s ease-out;pointer-events:none;z-index:1"></span>
+            <span style="display:block;position:relative;width:100%;aspect-ratio:1;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);overflow:hidden"><img data-hzoom="" src="{{ p.img }}" alt="{{ p.name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:{{ p.pos }};display:block;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
+            <span style="position:relative;display:block;height:1px;background:rgba(255,255,255,.16);overflow:hidden;margin-top:18px"><span data-hfill="" style="position:absolute;top:0;bottom:0;left:0;width:0%;background:#654a9e;transition:width .5s ease-out"></span></span>
+            <h4 style="margin:16px 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(17px,1.4vw,19px);line-height:1.2;text-wrap:pretty">{{ p.name }}</h4>
+            <p style="margin:8px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.5;color:rgba(255,255,255,.6)">{{ p.role }}</p>
+            <div style="display:flex;gap:4px;margin-top:12px">
+              <a href="{{ p.li }}" target="_blank" rel="noopener" aria-label="LinkedIn de {{ p.name }}" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;color:rgba(255,255,255,.55);transition:color .3s ease" style-hover="color:#8a6fc4"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 5.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.2 8.5h3.5V21H3.2V8.5zm5.6 0h3.35v1.7h.05c.47-.87 1.6-1.79 3.3-1.79 3.53 0 4.18 2.24 4.18 5.15V21h-3.5v-6.2c0-1.48-.03-3.38-2.08-3.38-2.09 0-2.4 1.6-2.4 3.27V21H8.8V8.5z"></path></svg></a>
+              <sc-if value="{{ p.mail }}" hint-placeholder-val="{{ false }}"><a href="mailto:{{ p.mail }}" aria-label="Correo de {{ p.name }}" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;color:rgba(255,255,255,.55);transition:color .3s ease" style-hover="color:#8a6fc4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 6.5 8.5 6 8.5-6"></path></svg></a></sc-if>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+      <div data-team-group="pri" style="scroll-margin-top:150px;display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-top:clamp(48px,6vw,88px);padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.14)"><h3 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,2vw,30px);letter-spacing:-.018em">Investigadores principales</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));border-left:1px solid rgba(255,255,255,.1)">
+        <sc-for list="{{ principales }}" as="p" hint-placeholder-count="11">
+          <article data-hcard="" style="position:relative;overflow:hidden;background:#16111f;border-right:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);padding:clamp(18px,1.8vw,26px);display:flex;flex-direction:column">
+            <span data-hbar="" style="position:absolute;top:0;left:0;width:2px;height:100%;background:#654a9e;transform:scaleY(0);transform-origin:top;transition:transform .5s ease-out;pointer-events:none;z-index:1"></span>
+            <span style="display:flex;align-items:center;justify-content:center;position:relative;width:100%;aspect-ratio:1;border:1px solid rgba(255,255,255,.16);background:#1e1728;overflow:hidden">
+              <sc-if value="{{ p.img }}" hint-placeholder-val="{{ true }}"><img data-hzoom="" src="{{ p.img }}" alt="{{ p.name }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1)"></sc-if>
+              <sc-if value="{{ p.noImg }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(28px,2.6vw,40px);letter-spacing:-.02em;color:rgba(255,255,255,.35)">{{ p.initials }}</span></sc-if>
+            </span>
+            <h4 style="margin:14px 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:16px;line-height:1.22;text-wrap:pretty">{{ p.name }}</h4>
+            <p style="margin:6px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.45;color:rgba(255,255,255,.6);text-wrap:pretty">{{ p.sub }}</p>
+            <sc-if value="{{ p.line }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;margin-top:12px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 10px">{{ p.line }}</span></sc-if>
+          </article>
+        </sc-for>
+      </div>
+      <div data-team-group="adj" style="scroll-margin-top:150px;display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-top:clamp(48px,6vw,88px);padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.14)"><h3 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,2vw,30px);letter-spacing:-.018em">Investigadores adjuntos</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));border-left:1px solid rgba(255,255,255,.1)">
+        <sc-for list="{{ adjuntos }}" as="p" hint-placeholder-count="12">
+          <article data-hcard="" style="position:relative;overflow:hidden;background:#16111f;border-right:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);padding:clamp(18px,1.8vw,26px);display:flex;flex-direction:column">
+            <span data-hbar="" style="position:absolute;top:0;left:0;width:2px;height:100%;background:#654a9e;transform:scaleY(0);transform-origin:top;transition:transform .5s ease-out;pointer-events:none;z-index:1"></span>
+            <span style="display:flex;align-items:center;justify-content:center;position:relative;width:100%;aspect-ratio:1;border:1px solid rgba(255,255,255,.16);background:#1e1728;overflow:hidden">
+              <sc-if value="{{ p.img }}" hint-placeholder-val="{{ true }}"><img data-hzoom="" src="{{ p.img }}" alt="{{ p.name }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1)"></sc-if>
+              <sc-if value="{{ p.noImg }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(28px,2.6vw,40px);letter-spacing:-.02em;color:rgba(255,255,255,.35)">{{ p.initials }}</span></sc-if>
+            </span>
+            <h4 style="margin:14px 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:16px;line-height:1.22;text-wrap:pretty">{{ p.name }}</h4>
+            <p style="margin:6px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.45;color:rgba(255,255,255,.6);text-wrap:pretty">{{ p.sub }}</p>
+            <sc-if value="{{ p.line }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;margin-top:12px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 10px">{{ p.line }}</span></sc-if>
+          </article>
+        </sc-for>
+      </div>
+      <div data-team-group="pro" style="scroll-margin-top:150px;display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-top:clamp(48px,6vw,88px);padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.14)"><h3 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,2vw,30px);letter-spacing:-.018em">Equipo profesional</h3></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));border-left:1px solid rgba(255,255,255,.1)">
+        <sc-for list="{{ profesional }}" as="p" hint-placeholder-count="5">
+          <article data-hcard="" style="position:relative;overflow:hidden;background:#16111f;border-right:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);padding:clamp(18px,1.8vw,26px);display:flex;flex-direction:column">
+            <span data-hbar="" style="position:absolute;top:0;left:0;width:2px;height:100%;background:#654a9e;transform:scaleY(0);transform-origin:top;transition:transform .5s ease-out;pointer-events:none;z-index:1"></span>
+            <span style="display:flex;align-items:center;justify-content:center;position:relative;width:100%;aspect-ratio:1;border:1px solid rgba(255,255,255,.16);background:#1e1728;overflow:hidden">
+              <sc-if value="{{ p.img }}" hint-placeholder-val="{{ true }}"><img data-hzoom="" src="{{ p.img }}" alt="{{ p.name }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1)"></sc-if>
+              <sc-if value="{{ p.noImg }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(28px,2.6vw,40px);letter-spacing:-.02em;color:rgba(255,255,255,.35)">{{ p.initials }}</span></sc-if>
+            </span>
+            <h4 style="margin:14px 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:16px;line-height:1.22;text-wrap:pretty">{{ p.name }}</h4>
+            <p style="margin:6px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.45;color:rgba(255,255,255,.6);text-wrap:pretty">{{ p.sub }}</p>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#16111f;color:#ffffff;padding:clamp(20px,3vw,44px) clamp(16px,3.5vw,48px) clamp(24px,3vw,44px)">
+    <div style="position:relative;overflow:hidden;border-radius:clamp(18px,2vw,28px);border:1px solid rgba(255,255,255,.07);background:#1a1424">
+      <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,3vw,48px);align-items:center;padding:clamp(28px,3.4vw,52px) clamp(22px,3vw,56px);border-bottom:1px solid rgba(255,255,255,.08)">
+        <div>
+          <p style="margin:0 0 12px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42)">Newsletter</p>
+          <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(15px,1.2vw,18px);line-height:1.55;color:rgba(255,255,255,.82);max-width:34ch">Noticias del centro, convocatorias abiertas y avances de nuestras líneas de investigación.</p>
+        </div>
+        <form onSubmit="{{ onSubscribe }}" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end">
+          <span style="position:relative;display:flex;align-items:center;flex:1 1 240px;max-width:360px">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:22px"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 6.5 8.5 6 8.5-6"></path></svg>
+            <input type="email" placeholder="tu@correo.cl" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:999px;color:#ffffff;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;padding:17px 24px 17px 52px;transition:border-color .3s ease,background .3s ease" style-focus="border-color:rgba(252,68,37,.7);background:rgba(255,255,255,.08)">
+          </span>
+          <button data-cta="" type="submit" style="position:relative;overflow:hidden;background:#ffffff;color:#1e1728;border:1px solid #ffffff;border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:15px;padding:17px 32px;cursor:pointer;transition:color .35s ease,border-color .4s ease"><span data-cta-sweep="" style="position:absolute;inset:0;background:#fc4425;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none"></span><span style="position:relative;z-index:1">{{ subscribeLabel }}</span></button>
+        </form>
+      </div>
+      <div style="position:relative;display:flex;flex-wrap:wrap;gap:clamp(28px,3.4vw,56px);padding:clamp(32px,4vw,64px) clamp(22px,3vw,56px)">
+        <div style="flex:1 1 320px;min-width:0;max-width:460px">
+          <div style="display:flex;align-items:center;gap:clamp(12px,1.6vw,22px);flex-wrap:nowrap;min-width:0">
+            <img src="assets/usach-white.png" alt="Universidad de Santiago de Chile" style="flex:0 1 auto;min-width:0;width:auto;height:auto;max-height:52px;max-width:48%;display:block;opacity:.85">
+            <span style="flex:0 0 1px;width:1px;height:44px;background:rgba(255,255,255,.16);display:block"></span>
+            <img src="assets/anid-white.png" alt="ANID · Agencia Nacional de Investigación y Desarrollo" style="flex:0 1 auto;min-width:0;width:auto;height:auto;max-height:68px;max-width:26%;display:block;opacity:.8">
+            <img src="assets/ministerio-white.png" alt="Ministerio de Ciencia, Tecnología, Conocimiento e Innovación · Gobierno de Chile" style="flex:0 1 auto;min-width:0;width:auto;height:auto;max-height:68px;max-width:26%;display:block;opacity:.8">
+          </div>
+          <p style="margin:26px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.6;color:rgba(255,255,255,.6);max-width:38ch">Centro de Innovación en Tecnología y Diseño de Materiales para el Entorno Construido.</p>
+        </div>
+        <div style="flex:1 1 170px;min-width:0">
+          <p style="margin:0 0 22px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42)">Áreas</p>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <a href="que-hacemos.html#investigacion" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Investigación</a>
+            <a href="que-hacemos.html#transferencia" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Transferencia tecnológica</a>
+            <a href="que-hacemos.html#laboratorios" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Laboratorios</a>
+            <a href="que-hacemos.html#servicios" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Servicios</a>
+            <a href="index.html#proyectos" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Proyectos</a>
+          </div>
+        </div>
+        <div style="flex:1 1 170px;min-width:0">
+          <p style="margin:0 0 22px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42)">Centro</p>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <a href="nosotros.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Nosotros</a>
+            <a href="noticias-y-eventos.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Noticias y Eventos</a>
+            <a href="contacto.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Contacto</a>
+            <a href="index.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Transparencia</a>
+          </div>
+        </div>
+        <div style="flex:1 1 190px;min-width:0">
+          <p style="margin:0 0 22px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42)">Conecta</p>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;gap:12px;margin-bottom:6px">
+              <a href="https://www.instagram.com/centro.cimac/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:999px;border:1px solid rgba(255,255,255,.28);color:#ffffff;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#ffffff;border-color:#ffffff;color:#16111f"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg></a>
+              <a href="https://www.linkedin.com/in/centro-cimac/" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:999px;border:1px solid rgba(255,255,255,.28);color:#ffffff;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#ffffff;border-color:#ffffff;color:#16111f"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M7.5 10.5V17M7.5 7.2v.1M11.5 17v-3.6a2.4 2.4 0 0 1 4.8 0V17"></path></svg></a>
+            </div>
+            <a href="mailto:contacto.cimac@usach.cl" style="display:flex;align-items:center;gap:11px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 6.5 8.5 6 8.5-6"></path></svg>contacto.cimac@usach.cl</a>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;display:flex;flex-wrap:wrap;gap:14px 28px;justify-content:space-between;align-items:center;padding:clamp(20px,2.2vw,28px) clamp(22px,3vw,56px);border-top:1px solid rgba(255,255,255,.08)">
+        <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)">© 2026 CIMAC · Universidad de Santiago de Chile</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center">
+          <a href="#" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)" style-hover="color:#ffffff">Términos y condiciones</a>
+          <a href="#" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)" style-hover="color:#ffffff">Política de privacidad</a>
+          <a href="mailto:contacto.cimac@usach.cl" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)" style-hover="color:#ffffff">contacto.cimac@usach.cl</a>
+          <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)">Desarrollado por <a href="https://deltadigital.cl" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7)" style-hover="color:#fc4425">Delta Digital</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ showWhatsapp }}" hint-placeholder-val="{{ true }}">
+    <a href="https://wa.me/56200000000" target="_blank" rel="noopener" aria-label="WhatsApp" style="position:fixed;right:clamp(16px,2.4vw,32px);bottom:clamp(16px,2.4vw,32px);z-index:55;width:50px;height:50px;border-radius:13px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(252,68,37,.34);transition:transform .35s cubic-bezier(.16,1,.3,1)" style-hover="transform:translateY(-4px) scale(1.04)">
+      <img src="assets/whatsapp.png" alt="" width="50" height="50" style="display:block;width:100%;height:100%;object-fit:cover">
+    </a>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showWhatsapp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
+const LI = 'https://www.linkedin.com';
+const ini = n => n.split(' ').filter(w => /^[A-ZÁÉÍÓÚÑ]/.test(w)).slice(0, 2).map(w => w[0]).join('');
+const DIRECCION = [
+  { name: 'José Antonio Carrasco Villa', role: 'Director ejecutivo', img: 'assets/team/opt/jose-antonio-carrasco.jpg', pos: 'center 20%', li: 'https://www.linkedin.com/in/tonocarrasco/', mail: '' },
+  { name: 'Alexandre Carbonnel Torralbo', role: 'Director científico', img: 'assets/team/opt/alexandre-carbonnel.jpg', pos: 'center 20%', li: 'https://www.linkedin.com/in/alexandre-carbonnel-b2695412/', mail: '' }
+];
+const LIDERES = [
+  { name: 'Hugo Pérez Herrera', role: 'Líder de línea 1 · MPS', img: 'assets/team/opt/hugo-perez.jpg', pos: 'center 20%', li: 'https://www.linkedin.com/in/hugo-p%C3%A9rez-herrera-27828a35/', mail: 'hugo.perez.h@usach.cl' },
+  { name: 'Macarena Valenzuela Zubiaur', role: 'Líder de línea 2 · CBB', img: 'assets/team/opt/macarena-valenzuela.jpg', pos: 'center 20%', li: 'https://www.linkedin.com/in/macarena-valenzuela-zubiaur-223b772b', mail: 'mvalenzuela@utem.cl' },
+  { name: 'Iván Derpich Contreras', role: 'Líder de línea 3 · LCPR', img: 'assets/team/opt/ivan-derpich.jpg', pos: 'center 20%', li: 'https://cl.linkedin.com/in/ivan-derpich-5aa23829', mail: 'ivan.derpich@usach.cl' },
+  { name: 'Pavlo Santander Tapia', role: 'Líder de línea 4 · IDSS', img: 'assets/team/opt/pavlo-santander.jpg', pos: 'center 20%', li: 'https://www.linkedin.com/in/pavlo-santander-tapia/', mail: 'pavlo.santander@usach.cl' }
+];
+const PRINCIPALES = [
+  ['Cristóbal Moreno Muñoz', 'Universidad de Santiago de Chile', 'L1', 'assets/team/cristobal-moreno.jpg'],
+  ['Constanza Ipinza Olatte', 'Universidad de Santiago de Chile', 'L1', 'assets/team/constanza-ipinza.jpg'],
+  ['Alejandro Weiss Münchmeyer', 'Laboratorio de Biomateriales, Biofabricación y Buen Vivir de Valdivia (LABVA)', 'L2', 'assets/team/alejandro-weiss.jpg'],
+  ['Andrea Wechsler Pizarro', 'Universidad del Desarrollo', 'L2', 'assets/team/opt/andrea-wechsler.jpg'],
+  ['Paola Benavides Bermúdez', 'Universidad Adolfo Ibáñez', 'L2', 'assets/team/opt/paola-benavides.jpg'],
+  ['Pablo Domínguez González', 'Universidad del Desarrollo', 'L2', 'assets/team/pablo-dominguez.jpg'],
+  ['Juan Miguel Sepúlveda Salas', 'Universidad de Santiago de Chile', 'L3', 'assets/team/opt/juan-sepulveda.jpg'],
+  ['Lorena Delgado Cadena', 'Universidad de Santiago de Chile', 'L4', 'assets/team/opt/lorena-delgado.jpg'],
+  ['Héctor Torres Bustos', 'Universidad Tecnológica Metropolitana', 'L4', 'assets/team/opt/hector-torres.jpg'],
+  ['Pablo Reyes Contreras', 'Universidad de Concepción', 'L4', 'assets/team/opt/pablo-reyes.jpg'],
+  ['Mauricio Loyola Vergara', 'Universidad Adolfo Ibáñez', 'L4', 'assets/team/opt/mauricio-loyola.jpg']
+].map(([name, sub, line, img]) => ({ name, sub, line: 'LÍNEA ' + line.slice(1), img, noImg: !img, initials: ini(name) }));
+const ADJUNTOS = [
+  ['Britam Gómez Arias', 'Universidad de Santiago de Chile', 'L1', 'assets/team/britam-gomez.jpg'],
+  ['Camila Burgos Leiva', 'Universidad de Santiago de Chile', 'L1', ''],
+  ['Laura Correa Quiroz', 'Universidad de Santiago de Chile', 'L1', 'assets/team/laura-correa.jpg'],
+  ['Daniel Escobar Carrillo', 'Universidad de Santiago de Chile', 'L1', ''],
+  ['Matías Elliott Oyarce', 'Pontificia Universidad Católica de Chile', 'L2', 'assets/team/matias-elliott.jpg'],
+  ['Regis Teixeira Mendonca', 'Universidad de Concepción', 'L2', ''],
+  ['María José Besoain Narváez', 'Laboratorio de Biomateriales, Biofabricación y Buen Vivir de Valdivia (LABVA)', 'L2', ''],
+  ['Suzanne Segeur Villanueva', 'Universidad Tecnológica Metropolitana', 'L2', 'assets/team/suzanne-segeur.jpg'],
+  ['Juan Pedro Sepúlveda Rojas', 'Universidad de Santiago de Chile', 'L3', 'assets/team/juan-pedro-sepulveda.jpg'],
+  ['Sergio Araya Goldberg', 'Universidad Adolfo Ibáñez', 'L4', ''],
+  ['Daniel Gálvez Manríquez', 'Universidad de Santiago de Chile', 'L4', 'assets/team/daniel-galvez.jpg'],
+  ['Cristina Villamar Ayala', 'Universidad de Santiago de Chile', 'L4', 'assets/team/cristina-villamar.jpg']
+].map(([name, sub, line, img]) => ({ name, sub, line: 'LÍNEA ' + line.slice(1), img, noImg: !img, initials: ini(name) }));
+const PROFESIONAL = [
+  ['Francisca Troncoso Herrera', 'Encargada de transferencia tecnológica', 'assets/team/francisca-troncoso.jpg'],
+  ['Leslie Díaz Jalaff', 'Encargada técnica de transferencia tecnológica', 'assets/team/opt/leslie-diaz.jpg'],
+  ['Ashley Gómez Ceballos', 'Encargada de comunicaciones', ''],
+  ['Iván Toro Urrutia', 'Encargado financiero', ''],
+  ['Benjamín Palma Arce', 'Community manager', '']
+].map(([name, sub, img]) => ({ name, sub, line: '', img, noImg: !img, initials: ini(name) }));
+
+class Component extends DCLogic {
+  state = {
+    menu: false,
+    subscribed: false,
+    isDesktop: typeof window !== 'undefined' ? window.innerWidth >= 1000 : true,
+    teamActive: 'dir'
+  };
+
+  constructor(props) {
+    super(props);
+    this.root = React.createRef();
+  }
+
+  bindHovers() {
+    const root = this.root.current;
+    if (!root) return;
+    root.querySelectorAll('[data-cta]').forEach(el => {
+      if (el.dataset.bound) return;
+      el.dataset.bound = '1';
+      const sweep = el.querySelector('[data-cta-sweep]');
+      const c = el.style.color, b = el.style.borderColor;
+      const paint = on => {
+        if (sweep) { sweep.style.transformOrigin = on ? 'left' : 'right'; sweep.style.transform = on ? 'scaleX(1)' : 'scaleX(0)'; }
+        el.style.color = on ? '#ffffff' : c;
+        el.style.borderColor = on ? '#fc4425' : b;
+      };
+      ['mouseenter', 'focus'].forEach(e => el.addEventListener(e, () => paint(true)));
+      ['mouseleave', 'blur'].forEach(e => el.addEventListener(e, () => paint(false)));
+    });
+    root.querySelectorAll('[data-hcard]').forEach(card => {
+      if (card.dataset.bound) return;
+      card.dataset.bound = '1';
+      const q = s => card.querySelector(s);
+      const bar = q('[data-hbar]'), fill = q('[data-hfill]'), num = q('[data-hnum]'), title = q('[data-htitle]'), zoom = q('[data-hzoom]');
+      const numBase = num && num.style.color, titleBase = title && title.style.color;
+      const paint = on => {
+        if (bar) bar.style.transform = on ? 'scaleY(1)' : 'scaleY(0)';
+        if (fill) fill.style.width = on ? '100%' : '0%';
+        if (num) num.style.color = on ? '#fc4425' : numBase;
+        if (title) title.style.color = on ? '#fc4425' : titleBase;
+        if (zoom) zoom.style.transform = on ? 'scale(1.06)' : 'scale(1)';
+      };
+      card.addEventListener('mouseenter', () => paint(true));
+      card.addEventListener('mouseleave', () => paint(false));
+    });
+  }
+
+  setupReveal() {
+    const root = this.root.current;
+    if (!root || !('IntersectionObserver' in window)) return;
+    if (!this.io) this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    root.querySelectorAll('[data-reveal]').forEach(el => {
+      if (el.dataset.rv) return;
+      el.dataset.rv = '1';
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1)';
+      this.io.observe(el);
+    });
+  }
+
+  tick = () => {
+    const root = this.root.current;
+    if (root) {
+      const hero = root.querySelector('[data-hero]');
+      const header = root.querySelector('[data-header]');
+      if (hero && header) {
+        const solid = hero.getBoundingClientRect().top < -40;
+        if (solid !== this.solid) {
+          this.solid = solid;
+          header.style.background = solid ? 'rgba(22,17,31,.92)' : 'transparent';
+          header.style.backdropFilter = solid ? 'saturate(140%) blur(14px)' : 'none';
+          header.style.borderBottomColor = solid ? 'rgba(255,255,255,.1)' : 'transparent';
+        }
+      }
+    }
+    if (root && !this.state.isDesktop) this.trackTeam(root);
+    this.raf = requestAnimationFrame(this.tick);
+  };
+
+  trackTeam(root) {
+    const groups = root.querySelectorAll('[data-team-group]');
+    if (!groups.length) return;
+    let active = groups[0].dataset.teamGroup;
+    groups.forEach(g => { if (g.getBoundingClientRect().top < 170) active = g.dataset.teamGroup; });
+    if (active === this.state.teamActive) return;
+    this.setState({ teamActive: active }, () => {
+      const nav = root.querySelector('[data-team-nav]');
+      const chip = nav && nav.querySelector('[data-g="' + active + '"]');
+      if (nav && chip) nav.scrollTo({ left: chip.offsetLeft - 20, behavior: 'smooth' });
+    });
+  }
+
+  initLenis(tries) {
+    const L = window.Lenis || (window.lenis && window.lenis.default);
+    if (!L) { if (tries < 40) this.lenisTo = setTimeout(() => this.initLenis(tries + 1), 100); return; }
+    if (this.lenis) return;
+    const opts = { duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true };
+    const bodyScrolls = document.body.scrollHeight > document.body.clientHeight + 1 && /auto|scroll/.test(getComputedStyle(document.body).overflowY);
+    if (bodyScrolls) { opts.wrapper = document.body; opts.content = document.body; }
+    this.lenis = new L(opts);
+    const raf = t => { if (!this.lenis) return; this.lenis.raf(t); this.lenisRaf = requestAnimationFrame(raf); };
+    this.lenisRaf = requestAnimationFrame(raf);
+  }
+
+  scrollToId(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (this.lenis) this.lenis.scrollTo(el, { offset: -70 });
+    else window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
+  }
+
+  componentDidMount() {
+    this.bindHovers();
+    this.setupReveal();
+    this.raf = requestAnimationFrame(this.tick);
+    this.initLenis(0);
+    const hash = window.location.hash.slice(1);
+    if (hash) this.hashTo = setTimeout(() => this.scrollToId(hash), 500);
+    this.onResize = () => {
+      const d = window.innerWidth >= 1000;
+      if (d !== this.state.isDesktop) this.setState({ isDesktop: d });
+    };
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentDidUpdate() { this.bindHovers(); this.setupReveal(); if (this.lenis) requestAnimationFrame(() => { if (this.lenis) this.lenis.resize(); }); }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    if (this.lenisRaf) cancelAnimationFrame(this.lenisRaf);
+    clearTimeout(this.lenisTo);
+    clearTimeout(this.hashTo);
+    if (this.io) this.io.disconnect();
+    window.removeEventListener('resize', this.onResize);
+    if (this.lenis) { this.lenis.destroy(); this.lenis = null; }
+  }
+
+  pageVals() {
+    return { direccion: DIRECCION, lideres: LIDERES, adjuntos: ADJUNTOS, principales: PRINCIPALES, profesional: PROFESIONAL };
+  }
+
+  renderVals() {
+    return Object.assign({
+      root: this.root,
+      menu: this.state.menu,
+      isDesktop: this.state.isDesktop,
+      isMobile: !this.state.isDesktop,
+      teamNav: [['dir','Dirección'],['lid','Líderes de línea'],['pri','Principales'],['adj','Adjuntos'],['pro','Equipo profesional']].map(([key, label]) => {
+        const on = key === this.state.teamActive;
+        return { key, label, current: on ? 'true' : 'false', bg: on ? '#ffffff' : 'transparent', color: on ? '#16111f' : 'rgba(255,255,255,.78)', border: on ? '#ffffff' : 'rgba(255,255,255,.22)' };
+      }),
+      goTeam: e => {
+        const key = e.currentTarget.dataset.g;
+        const el = this.root.current && this.root.current.querySelector('[data-team-group="' + key + '"]');
+        if (!el) return;
+        this.setState({ teamActive: key });
+        if (this.lenis) this.lenis.scrollTo(el, { offset: -140 });
+        else window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 140, behavior: 'smooth' });
+      },
+      showWhatsapp: this.props.showWhatsapp !== false,
+      subscribeLabel: this.state.subscribed ? 'Suscrito' : 'Suscribirme',
+      toggleMenu: () => this.setState(st => ({ menu: !st.menu })),
+      goTo: e => { e.preventDefault(); this.scrollToId(e.currentTarget.dataset.goto); },
+      onSubscribe: e => { e.preventDefault(); this.setState({ subscribed: true }); }
+    }, this.pageVals());
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preload" href="assets/fonts/CamptonBook.otf" as="font" type="font/otf" crossorigin="anonymous">
+<link rel="preload" href="assets/fonts/CamptonMedium.otf" as="font" type="font/otf" crossorigin="anonymous">
+<link rel="preload" href="assets/fonts/CamptonSemiBold.otf" as="font" type="font/otf" crossorigin="anonymous">
+<link rel="preload" href="assets/fonts/EuclidFlexSemiBold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="assets/fonts/EuclidFlexBold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="stylesheet" href="_ds/industry-5e022a0e-b71f-4223-b93c-179ce59a54f1/styles.css">
+<script src="_ds/industry-5e022a0e-b71f-4223-b93c-179ce59a54f1/_ds_bundle.js"></script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+@font-face{font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/EuclidFlexMedium.ttf') format('truetype');font-weight:500;font-display:block}
+@font-face{font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/EuclidFlexSemiBold.ttf') format('truetype');font-weight:600;font-display:block}
+@font-face{font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/EuclidFlexBold.ttf') format('truetype');font-weight:700;font-display:block}
+@font-face{font-family:'Campton','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/CamptonBook.otf') format('opentype');font-weight:400;font-display:block}
+@font-face{font-family:'Campton','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/CamptonMedium.otf') format('opentype');font-weight:500;font-display:block}
+@font-face{font-family:'Campton','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/CamptonSemiBold.otf') format('opentype');font-weight:600;font-display:block}
+body{margin:0;background:#ffffff;color:#1e1728;font-family:'Campton','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#654a9e;text-decoration:none;transition:color .25s ease}
+a:hover{color:#fc4425}
+::selection{background:rgba(252,68,37,.22)}
+:focus-visible{outline:2px solid #fc4425;outline-offset:3px}
+input::placeholder{color:rgba(255,255,255,.45);font-family:'Campton'}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes linkIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(-2%,3%,0) rotate(8deg)}}
+@keyframes svcFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.2px)}}
+@keyframes svcSpin{to{transform:rotate(360deg)}}
+@keyframes svcCounter{to{transform:rotate(-360deg)}}
+@keyframes svcBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes svcTilt{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes svcPulse{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes svcDrift{0%{transform:translate3d(-5%,-3%,0) scale(1.06)}100%{transform:translate3d(5%,4%,0) scale(1)}}
+@media (prefers-reduced-motion:reduce){[data-svc-art] *{animation:none!important}}
+</style>
+</helmet>
+
+<div ref="{{ root }}" style="position:relative;width:100%;overflow:clip">
+
+  <header data-header="" style="position:fixed;top:0;left:0;right:0;z-index:60;transition:background .35s ease,border-color .35s ease;border-bottom:1px solid transparent">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px clamp(20px,5vw,80px)">
+      <a href="index.html" style="display:block;flex:0 0 auto">
+        <img src="assets/cimac-logo-slogan-white.png" alt="CIMAC · Centro de Innovación en Tecnología de Materiales" style="height:clamp(40px,3.6vw,52px);width:auto;display:block">
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex;align-items:center;gap:clamp(14px,1.9vw,32px)">
+          <a href="index.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,.86)" style-hover="color:#ffffff">Inicio</a>
+          <a href="que-hacemos.html" aria-current="page" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:#ffffff;padding-bottom:4px;border-bottom:1px solid #fc4425">¿Qué hacemos?</a>
+          <a href="index.html#proyectos" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,.86)" style-hover="color:#ffffff">Proyectos</a>
+          <a href="nosotros.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,.86)" style-hover="color:#ffffff">Nosotros</a>
+          <a href="noticias-y-eventos.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,.86)" style-hover="color:#ffffff">Noticias y Eventos</a>
+        </nav>
+      </sc-if>
+      <div style="display:flex;align-items:center;gap:10px;flex:0 0 auto">
+        <a data-cta="" href="contacto.html" style="position:relative;overflow:hidden;display:inline-flex;align-items:center;background:#ffffff;color:#1e1728;border:1px solid #ffffff;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;padding:13px 22px;border-radius:999px;white-space:nowrap;transition:color .35s ease,border-color .4s ease"><span data-cta-sweep="" style="position:absolute;inset:0;background:#fc4425;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none"></span><span style="position:relative;z-index:1">Contáctanos</span></a>
+        <button onClick="{{ toggleMenu }}" aria-label="Menú" style="display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:46px;height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.28);background:transparent;border-radius:999px;cursor:pointer;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#ffffff;background:rgba(255,255,255,.08)">
+          <span style="display:block;height:1.5px;background:#ffffff;border-radius:2px"></span>
+          <span style="display:block;height:1.5px;background:#ffffff;border-radius:2px"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <sc-if value="{{ menu }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:70;background:#16111f;display:flex;flex-direction:column;padding:clamp(20px,5vw,80px);animation:linkIn .4s both">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <img src="assets/cimac-logo-slogan-white.png" alt="CIMAC" style="height:44px;width:auto">
+        <button onClick="{{ toggleMenu }}" aria-label="Cerrar" style="width:46px;height:34px;border:1px solid rgba(255,255,255,.28);background:transparent;border-radius:999px;color:#ffffff;font-size:20px;cursor:pointer;font-family:'Campton','Helvetica Neue',Arial,sans-serif">×</button>
+      </div>
+      <nav style="margin-top:auto;margin-bottom:auto;display:flex;flex-direction:column;gap:clamp(6px,1.4vh,14px)">
+        <a href="que-hacemos.html" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#fc4425;animation:linkIn .55s both;animation-delay:.05s">¿Qué hacemos?</a>
+        <a href="index.html#proyectos" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#ffffff;animation:linkIn .55s both;animation-delay:.11s" style-hover="color:#fc4425">Proyectos</a>
+        <a href="nosotros.html" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#ffffff;animation:linkIn .55s both;animation-delay:.17s" style-hover="color:#fc4425">Nosotros</a>
+        <a href="noticias-y-eventos.html" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#ffffff;animation:linkIn .55s both;animation-delay:.23s" style-hover="color:#fc4425">Noticias y Eventos</a>
+        <a href="contacto.html" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#ffffff;animation:linkIn .55s both;animation-delay:.29s" style-hover="color:#fc4425">Contacto</a>
+      </nav>
+      <div style="display:flex;flex-wrap:wrap;gap:24px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;color:rgba(255,255,255,.5);animation:linkIn .6s both;animation-delay:.4s">
+        <span>contacto.cimac@usach.cl</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <section data-hero="" data-screen-label="Hero" style="position:relative;overflow:hidden;background:#1e1728;color:#ffffff;padding:clamp(140px,15vw,210px) clamp(20px,5vw,80px) clamp(64px,7vw,104px)">
+    <div aria-hidden="true" style="position:absolute;top:clamp(-520px,-30vw,-280px);right:clamp(-460px,-24vw,-220px);width:clamp(560px,62vw,1100px);aspect-ratio:1;background-image:url('assets/fondo-blob-opt.webp');background-size:contain;background-position:center;background-repeat:no-repeat;opacity:.45;mix-blend-mode:screen;animation:float 24s ease-in-out infinite;pointer-events:none"></div>
+    <div style="position:relative;max-width:1500px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(22px,2.4vw,32px)">
+      <nav aria-label="Ruta" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:13px;color:rgba(255,255,255,.5);animation:rise .8s cubic-bezier(.16,1,.3,1) both">
+        <a href="index.html" style="color:rgba(255,255,255,.5)" style-hover="color:#ffffff">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span style="color:rgba(255,255,255,.82)">¿Qué hacemos?</span>
+      </nav>
+      <h1 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(48px,7vw,112px);line-height:.98;letter-spacing:-.03em;animation:rise .9s cubic-bezier(.16,1,.3,1) both;animation-delay:.08s">¿Qué hacemos?</h1>
+      <p style="margin:0;max-width:62ch;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(18px,1.45vw,22px);line-height:1.55;color:rgba(255,255,255,.76);text-wrap:pretty;animation:rise .9s cubic-bezier(.16,1,.3,1) both;animation-delay:.16s">Desarrollamos e impulsamos soluciones innovadoras para el entorno construido, mediante la investigación, el diseño y la aplicación de nuevos materiales, componentes y sistemas constructivos, integrando innovación y tecnología que contribuyen a una construcción más sostenible y circular.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(12px,2vw,28px);padding-top:clamp(22px,2.4vw,32px);border-top:1px solid rgba(255,255,255,.12);animation:rise .9s cubic-bezier(.16,1,.3,1) both;animation-delay:.24s">
+        <a href="#investigacion" data-goto="investigacion" onClick="{{ goTo }}" style="white-space:nowrap;display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#ffffff;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#fc4425;background:rgba(252,68,37,.12)"><span style="font-weight:600;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.45)">01</span>Investigación</a>
+        <a href="#transferencia" data-goto="transferencia" onClick="{{ goTo }}" style="white-space:nowrap;display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#ffffff;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#fc4425;background:rgba(252,68,37,.12)"><span style="font-weight:600;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.45)">02</span>Transferencia tecnológica</a>
+        <a href="#laboratorios" data-goto="laboratorios" onClick="{{ goTo }}" style="white-space:nowrap;display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#ffffff;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#fc4425;background:rgba(252,68,37,.12)"><span style="font-weight:600;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.45)">03</span>Laboratorios</a>
+        <a href="#servicios" data-goto="servicios" onClick="{{ goTo }}" style="white-space:nowrap;display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#ffffff;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#fc4425;background:rgba(252,68,37,.12)"><span style="font-weight:600;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.45)">04</span>Servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="investigacion" data-screen-label="Investigación" style="background:#ffffff;padding:clamp(72px,9vw,140px) clamp(20px,5vw,80px)">
+    <div style="max-width:1500px;margin:0 auto">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,72px);align-items:flex-end">
+        <div style="flex:2 1 560px;min-width:0">
+          <p style="margin:0 0 16px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a58a80">01 · Investigación</p>
+          <h2 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(34px,4.2vw,62px);line-height:1.02;letter-spacing:-.025em;color:#1e1728;text-wrap:balance">Innovación y tecnología para transformar el entorno construido.</h2>
+        </div>
+        <p style="flex:1 1 340px;margin:0;max-width:56ch;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.65;color:#4a4256;text-wrap:pretty">Nuestro equipo multidisciplinario desarrolla investigación aplicada en distintas áreas del conocimiento, abordando desafíos del entorno construido a través de cuatro líneas de investigación, desarrollo, innovación y transferencia tecnológica (I+D+i+TT).</p>
+      </div>
+
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:#e6e2ee;border:1px solid #e6e2ee;margin-top:clamp(40px,5vw,72px)">
+        <article data-hcard="" style="position:relative;overflow:hidden;background:#ffffff;padding:clamp(24px,2.4vw,36px);display:flex;flex-direction:column">
+          <span aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:3px;background:#654a9e"></span>
+          <span data-hbar="" style="position:absolute;top:0;left:0;width:2px;height:100%;background:#fc4425;transform:scaleY(0);transform-origin:top;transition:transform .5s ease-out;pointer-events:none"></span>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;color:#654a9e">L01 · MPS</span>
+            <span data-hnum="" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(44px,4vw,64px);line-height:.8;letter-spacing:-.04em;color:#f0edf4;transition:color .45s ease">01</span>
+          </div>
+          <h3 data-htitle="" style="margin:clamp(18px,2vw,28px) 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,1.8vw,27px);line-height:1.12;letter-spacing:-.018em;color:#1e1728;text-wrap:pretty;transition:color .35s ease">Materias primas secundarias (MPS)</h3>
+          <p style="margin:14px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.62;color:#4a4256;text-wrap:pretty">Investiga y desarrolla soluciones para transformar residuos y materiales recuperados en nuevas materias primas, promoviendo su valorización y reincorporación en procesos productivos de la construcción.</p>
+          <p style="margin:20px 0 0;display:flex;align-items:center;gap:9px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#1e1728"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#654a9e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>7 investigadores asociados</p>
+          <div style="margin-top:auto;padding-top:clamp(22px,2.4vw,32px)">
+            <span style="position:relative;display:block;height:1px;background:#e6e2ee;overflow:hidden"><span data-hfill="" style="position:absolute;top:0;bottom:0;left:0;width:0%;background:#fc4425;transition:width .5s ease-out"></span></span>
+            <div style="display:flex;align-items:center;gap:14px;margin-top:20px">
+              <img src="assets/team/opt/hugo-perez.jpg" alt="Hugo Pérez Herrera" loading="lazy" style="width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center 20%;border:1px solid #e6e2ee;flex:0 0 auto">
+              <div style="flex:1 1 auto;min-width:0">
+                <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:15px;color:#1e1728">Hugo Pérez Herrera</p>
+                <p style="margin:3px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:#8a8299">Líder de línea</p>
+              </div>
+              <div style="display:flex;gap:6px;flex:0 0 auto">
+                <a href="https://www.linkedin.com/in/hugo-p%C3%A9rez-herrera-27828a35/" target="_blank" rel="noopener" aria-label="LinkedIn de Hugo Pérez Herrera" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid rgba(30,23,40,.16);color:#1e1728;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#654a9e;border-color:#654a9e;color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 5.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.2 8.5h3.5V21H3.2V8.5zm5.6 0h3.35v1.7h.05c.47-.87 1.6-1.79 3.3-1.79 3.53 0 4.18 2.24 4.18 5.150V21h-3.5v-6.2c0-1.48-.03-3.38-2.08-3.38-2.09 0-2.4 1.6-2.4 3.27V21H8.8V8.5z"></path></svg></a>
+                <a href="mailto:hugo.perez.h@usach.cl" aria-label="Correo de Hugo Pérez Herrera" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid rgba(30,23,40,.16);color:#1e1728;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#654a9e;border-color:#654a9e;color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 6.5 8.5 6 8.5-6"></path></svg></a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article data-hcard="" style="position:relative;overflow:hidden;background:#ffffff;padding:clamp(24px,2.4vw,36px);display:flex;flex-direction:column">
+          <span aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:3px;background:#9a9a5e"></span>
+          <span data-hbar="" style="position:absolute;top:0;left:0;width:2px;height:100%;background:#fc4425;transform:scaleY(0);transform-origin:top;transition:transform .5s ease-out;pointer-events:none"></span>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;color:#7c7c45">L02 · CBB</span>
+            <span data-hnum="" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(44px,4vw,64px);line-height:.8;letter-spacing:-.04em;color:#f0edf4;transition:color .45s ease">02</span>
+          </div>
+          <h3 data-htitle="" style="margin:clamp(18px,2vw,28px) 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,1.8vw,27px);line-height:1.12;letter-spacing:-.018em;color:#1e1728;text-wrap:pretty;transition:color .35s ease">Componentes biobasados (CBB)</h3>
+          <p style="margin:14px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.62;color:#4a4256;text-wrap:pretty">Investiga y desarrolla materiales y componentes a partir de recursos de origen biobasado, explorando nuevas alternativas para su aplicación en la construcción y el entorno construido.</p>
+          <p style="margin:20px 0 0;display:flex;align-items:center;gap:9px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#1e1728"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#654a9e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>9 investigadores asociados</p>
+          <div style="margin-top:auto;padding-top:clamp(22px,2.4vw,32px)">
+            <span style="position:relative;display:block;height:1px;background:#e6e2ee;overflow:hidden"><span data-hfill="" style="position:absolute;top:0;bottom:0;left:0;width:0%;background:#fc4425;transition:width .5s ease-out"></span></span>
+            <div style="display:flex;align-items:center;gap:14px;margin-top:20px">
+              <img src="assets/team/opt/macarena-valenzuela.jpg" alt="Macarena Valenzuela Zubiaur" loading="lazy" style="width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center 20%;border:1px solid #e6e2ee;flex:0 0 auto">
+              <div style="flex:1 1 auto;min-width:0">
+                <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:15px;color:#1e1728">Macarena Valenzuela Zubiaur</p>
+                <p style="margin:3px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:#8a8299">Líder de línea</p>
+              </div>
+              <div style="display:flex;gap:6px;flex:0 0 auto">
+                <a href="https://www.linkedin.com/in/macarena-valenzuela-zubiaur-223b772b" target="_blank" rel="noopener" aria-label="LinkedIn de Macarena Valenzuela Zubiaur" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid rgba(30,23,40,.16);color:#1e1728;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#654a9e;border-color:#654a9e;color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 5.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.2 8.5h3.5V21H3.2V8.5zm5.6 0h3.35v1.7h.05c.47-.87 1.6-1.79 3.3-1.79 3.53 0 4.18 2.24 4.18 5.15V21h-3.5v-6.2c0-1.48-.03-3.38-2.08-3.38-2.09 0-2.4 1.6-2.4 3.27V21H8.8V8.5z"></path></svg></a>
+                <a href="mailto:mvalenzuela@utem.cl" aria-label="Correo de Macarena Valenzuela Zubiaur" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid rgba(30,23,40,.16);color:#1e1728;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#654a9e;border-color:#654a9e;color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 6.5 8.5 6 8.5-6"></path></svg></a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article data-hcard="" style="position:relative;overflow:hidden;background:#ffffff;padding:clamp(24px,2.4vw,36px);display:flex;flex-direction:column">
+          <span aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:3px;background:#a58a80"></span>
+          <span data-hbar="" style="position:absolute;top:0;left:0;width:2px;height:100%;background:#fc4425;transform:scaleY(0);transform-origin:top;transition:transform .5s ease-out;pointer-events:none"></span>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;color:#8a6c62">L03 · LCPR</span>
+            <span data-hnum="" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(44px,4vw,64px);line-height:.8;letter-spacing:-.04em;color:#f0edf4;transition:color .45s ease">03</span>
+          </div>
+          <h3 data-htitle="" style="margin:clamp(18px,2vw,28px) 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,1.8vw,27px);line-height:1.12;letter-spacing:-.018em;color:#1e1728;text-wrap:pretty;transition:color .35s ease">Logística circular y procesos de reciclaje</h3>
+          <p style="margin:14px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.62;color:#4a4256;text-wrap:pretty">Desarrolla estrategias y soluciones para optimizar la gestión, logística y valorización de residuos, facilitando su reincorporación a nuevos procesos productivos y cadenas de valor circulares.</p>
+          <p style="margin:20px 0 0;display:flex;align-items:center;gap:9px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#1e1728"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#654a9e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>3 investigadores asociados</p>
+          <div style="margin-top:auto;padding-top:clamp(22px,2.4vw,32px)">
+            <span style="position:relative;display:block;height:1px;background:#e6e2ee;overflow:hidden"><span data-hfill="" style="position:absolute;top:0;bottom:0;left:0;width:0%;background:#fc4425;transition:width .5s ease-out"></span></span>
+            <div style="display:flex;align-items:center;gap:14px;margin-top:20px">
+              <img src="assets/team/opt/ivan-derpich.jpg" alt="Iván Derpich Contreras" loading="lazy" style="width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center 20%;border:1px solid #e6e2ee;flex:0 0 auto">
+              <div style="flex:1 1 auto;min-width:0">
+                <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:15px;color:#1e1728">Iván Derpich Contreras</p>
+                <p style="margin:3px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:#8a8299">Líder de línea</p>
+              </div>
+              <div style="display:flex;gap:6px;flex:0 0 auto">
+                <a href="https://cl.linkedin.com/in/ivan-derpich-5aa23829" target="_blank" rel="noopener" aria-label="LinkedIn de Iván Derpich Contreras" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid rgba(30,23,40,.16);color:#1e1728;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#654a9e;border-color:#654a9e;color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 5.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.2 8.5h3.5V21H3.2V8.5zm5.6 0h3.35v1.7h.05c.47-.87 1.6-1.79 3.3-1.79 3.53 0 4.180 2.24 4.18 5.15V21h-3.5v-6.2c0-1.48-.03-3.38-2.08-3.38-2.09 0-2.4 1.6-2.4 3.27V21H8.8V8.5z"></path></svg></a>
+                <a href="mailto:ivan.derpich@usach.cl" aria-label="Correo de Iván Derpich Contreras" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid rgba(30,23,40,.16);color:#1e1728;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#654a9e;border-color:#654a9e;color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 6.5 8.5 6 8.5-6"></path></svg></a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article data-hcard="" style="position:relative;overflow:hidden;background:#ffffff;padding:clamp(24px,2.4vw,36px);display:flex;flex-direction:column">
+          <span aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:3px;background:#fc4425"></span>
+          <span data-hbar="" style="position:absolute;top:0;left:0;width:2px;height:100%;background:#fc4425;transform:scaleY(0);transform-origin:top;transition:transform .5s ease-out;pointer-events:none"></span>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;color:#d63716">L04 · IDSS</span>
+            <span data-hnum="" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(44px,4vw,64px);line-height:.8;letter-spacing:-.04em;color:#f0edf4;transition:color .45s ease">04</span>
+          </div>
+          <h3 data-htitle="" style="margin:clamp(18px,2vw,28px) 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,1.8vw,27px);line-height:1.12;letter-spacing:-.018em;color:#1e1728;text-wrap:pretty;transition:color .35s ease">Innovación y desarrollo de sistemas constructivos (IDSS)</h3>
+          <p style="margin:14px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.62;color:#4a4256;text-wrap:pretty">Desarrolla y valida soluciones y sistemas constructivos innovadores que integran nuevos materiales y tecnologías, contribuyendo a una construcción más eficiente y sostenible.</p>
+          <p style="margin:20px 0 0;display:flex;align-items:center;gap:9px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#1e1728"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#654a9e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>8 investigadores asociados</p>
+          <div style="margin-top:auto;padding-top:clamp(22px,2.4vw,32px)">
+            <span style="position:relative;display:block;height:1px;background:#e6e2ee;overflow:hidden"><span data-hfill="" style="position:absolute;top:0;bottom:0;left:0;width:0%;background:#fc4425;transition:width .5s ease-out"></span></span>
+            <div style="display:flex;align-items:center;gap:14px;margin-top:20px">
+              <img src="assets/team/opt/pavlo-santander.jpg" alt="Pavlo Santander Tapia" loading="lazy" style="width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center 20%;border:1px solid #e6e2ee;flex:0 0 auto">
+              <div style="flex:1 1 auto;min-width:0">
+                <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:15px;color:#1e1728">Pavlo Santander Tapia</p>
+                <p style="margin:3px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:#8a8299">Líder de línea</p>
+              </div>
+              <div style="display:flex;gap:6px;flex:0 0 auto">
+                <a href="https://www.linkedin.com/in/pavlo-santander-tapia/" target="_blank" rel="noopener" aria-label="LinkedIn de Pavlo Santander Tapia" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid rgba(30,23,40,.16);color:#1e1728;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#654a9e;border-color:#654a9e;color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 5.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.2 8.5h3.5V21H3.2V8.5zm5.6 0h3.35v1.7h.05c.47-.87 1.6-1.79 3.3-1.79 3.53 0 4.18 2.24 4.18 5.15V21h-3.5v-6.2c0-1.48-.03-3.38-2.08-3.38-2.09 0-2.4 1.6-2.4 3.27V21H8.8V8.5z"></path></svg></a>
+                <a href="mailto:pavlo.santander@usach.cl" aria-label="Correo de Pavlo Santander Tapia" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;border:1px solid rgba(30,23,40,.16);color:#1e1728;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#654a9e;border-color:#654a9e;color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 6.5 8.5 6 8.5-6"></path></svg></a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="transferencia" data-screen-label="Transferencia tecnológica" style="position:relative;overflow:hidden;background:#16111f;color:#ffffff;padding:clamp(72px,9vw,140px) clamp(20px,5vw,80px)">
+    <div style="max-width:1500px;margin:0 auto">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,72px);align-items:flex-end">
+        <div style="flex:2 1 560px;min-width:0">
+          <p style="margin:0 0 16px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#c9b0a6">02 · Transferencia tecnológica</p>
+          <h2 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(38px,5vw,76px);line-height:1;letter-spacing:-.028em">Del desafío al mercado</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;max-width:58ch">
+          <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.65;color:rgba(255,255,255,.82);text-wrap:pretty">Conectamos el conocimiento científico y las tecnologías desarrolladas en CIMAC con las necesidades del sector productivo. Acompañamos el desarrollo, validación y transferencia de soluciones tecnológicas mediante proyectos colaborativos y vinculación con empresas.</p>
+          <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.65;color:rgba(255,255,255,.6);text-wrap:pretty">CIMAC puede intervenir en distintas etapas del proceso, conectando sus capacidades de investigación, desarrollo e innovación con las necesidades de cada desafío, desde la identificación de oportunidades hasta la llegada de soluciones al mercado.</p>
+        </div>
+      </div>
+
+      <ol data-reveal="" style="list-style:none;margin:clamp(48px,6vw,88px) 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));border-top:1px solid rgba(255,255,255,.14)">
+        <li data-hcard="" style="position:relative;padding:clamp(24px,2.4vw,34px) clamp(18px,1.8vw,28px) clamp(28px,3vw,40px) 0;border-right:1px solid rgba(255,255,255,.1)">
+          <span data-hfill="" style="position:absolute;top:-1px;left:0;height:2px;width:0%;background:#fc4425;transition:width .6s ease-out"></span>
+          <span aria-hidden="true" style="position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:50%;background:#16111f;border:1px solid #fc4425"></span>
+          <span data-hnum="" style="display:block;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(52px,5vw,80px);line-height:.85;letter-spacing:-.04em;color:rgba(255,255,255,.1);transition:color .45s ease">01</span>
+          <p style="margin:clamp(18px,2vw,26px) 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fc4425">Desafío – oportunidad</p>
+          <h3 style="margin:10px 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(19px,1.5vw,22px);line-height:1.18;letter-spacing:-.015em;text-wrap:pretty">Identificación de necesidades</h3>
+          <p style="margin:12px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:1.6;color:rgba(255,255,255,.62);text-wrap:pretty">Identificamos desafíos y oportunidades del sector productivo que puedan abordarse mediante el desarrollo de nuevas soluciones tecnológicas.</p>
+        </li>
+        <li data-hcard="" style="position:relative;padding:clamp(24px,2.4vw,34px) clamp(18px,1.8vw,28px) clamp(28px,3vw,40px);border-right:1px solid rgba(255,255,255,.1)">
+          <span data-hfill="" style="position:absolute;top:-1px;left:0;height:2px;width:0%;background:#fc4425;transition:width .6s ease-out"></span>
+          <span aria-hidden="true" style="position:absolute;top:-6px;left:clamp(18px,1.8vw,28px);width:11px;height:11px;border-radius:50%;background:#16111f;border:1px solid #fc4425"></span>
+          <span data-hnum="" style="display:block;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(52px,5vw,80px);line-height:.85;letter-spacing:-.04em;color:rgba(255,255,255,.1);transition:color .45s ease">02</span>
+          <p style="margin:clamp(18px,2vw,26px) 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fc4425">Desarrollo</p>
+          <h3 style="margin:10px 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(19px,1.5vw,22px);line-height:1.18;letter-spacing:-.015em;text-wrap:pretty">Investigación, desarrollo, innovación y prototipado</h3>
+          <p style="margin:12px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:1.6;color:rgba(255,255,255,.62);text-wrap:pretty">Transformamos las oportunidades identificadas en soluciones mediante actividades de investigación, desarrollo e innovación (I+D+i+TT), avanzando en el diseño y elaboración de prototipos.</p>
+        </li>
+        <li data-hcard="" style="position:relative;padding:clamp(24px,2.4vw,34px) clamp(18px,1.8vw,28px) clamp(28px,3vw,40px);border-right:1px solid rgba(255,255,255,.1)">
+          <span data-hfill="" style="position:absolute;top:-1px;left:0;height:2px;width:0%;background:#fc4425;transition:width .6s ease-out"></span>
+          <span aria-hidden="true" style="position:absolute;top:-6px;left:clamp(18px,1.8vw,28px);width:11px;height:11px;border-radius:50%;background:#16111f;border:1px solid #fc4425"></span>
+          <span data-hnum="" style="display:block;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(52px,5vw,80px);line-height:.85;letter-spacing:-.04em;color:rgba(255,255,255,.1);transition:color .45s ease">03</span>
+          <p style="margin:clamp(18px,2vw,26px) 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fc4425">Validación</p>
+          <h3 style="margin:10px 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(19px,1.5vw,22px);line-height:1.18;letter-spacing:-.015em;text-wrap:pretty">Ensayos y evaluación de desempeño</h3>
+          <p style="margin:12px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:1.6;color:rgba(255,255,255,.62);text-wrap:pretty">Evaluamos el funcionamiento y desempeño de los prototipos mediante ensayos y pruebas técnicas, identificando su nivel de madurez tecnológica y potencial de aplicación.</p>
+        </li>
+        <li data-hcard="" style="position:relative;padding:clamp(24px,2.4vw,34px) clamp(18px,1.8vw,28px) clamp(28px,3vw,40px);border-right:1px solid rgba(255,255,255,.1)">
+          <span data-hfill="" style="position:absolute;top:-1px;left:0;height:2px;width:0%;background:#fc4425;transition:width .6s ease-out"></span>
+          <span aria-hidden="true" style="position:absolute;top:-6px;left:clamp(18px,1.8vw,28px);width:11px;height:11px;border-radius:50%;background:#16111f;border:1px solid #fc4425"></span>
+          <span data-hnum="" style="display:block;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(52px,5vw,80px);line-height:.85;letter-spacing:-.04em;color:rgba(255,255,255,.1);transition:color .45s ease">04</span>
+          <p style="margin:clamp(18px,2vw,26px) 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fc4425">Escalamiento</p>
+          <h3 style="margin:10px 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(19px,1.5vw,22px);line-height:1.18;letter-spacing:-.015em;text-wrap:pretty">Crecimiento y replicabilidad</h3>
+          <p style="margin:12px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:1.6;color:rgba(255,255,255,.62);text-wrap:pretty">Avanzamos en el desarrollo de soluciones que puedan producirse a mayor escala, evaluando su viabilidad técnica y económica para facilitar su implementación y replicabilidad.</p>
+        </li>
+        <li data-hcard="" style="position:relative;padding:clamp(24px,2.4vw,34px) 0 clamp(28px,3vw,40px) clamp(18px,1.8vw,28px)">
+          <span data-hfill="" style="position:absolute;top:-1px;left:0;height:2px;width:0%;background:#fc4425;transition:width .6s ease-out"></span>
+          <span aria-hidden="true" style="position:absolute;top:-6px;left:clamp(18px,1.8vw,28px);width:11px;height:11px;border-radius:50%;background:#fc4425;border:1px solid #fc4425"></span>
+          <span data-hnum="" style="display:block;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(52px,5vw,80px);line-height:.85;letter-spacing:-.04em;color:rgba(255,255,255,.1);transition:color .45s ease">05</span>
+          <p style="margin:clamp(18px,2vw,26px) 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fc4425">Mercado</p>
+          <h3 style="margin:10px 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(19px,1.5vw,22px);line-height:1.18;letter-spacing:-.015em;text-wrap:pretty">Adopción y expansión</h3>
+          <p style="margin:12px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:1.6;color:rgba(255,255,255,.62);text-wrap:pretty">Facilitamos la transferencia e incorporación de las tecnologías al sector productivo, promoviendo su adopción, comercialización y expansión en nuevos mercados.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="laboratorios" data-screen-label="Laboratorios" style="background:#f6f5f9;padding:clamp(72px,9vw,140px) clamp(20px,5vw,80px)">
+    <div style="max-width:1500px;margin:0 auto">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,72px);align-items:flex-end">
+        <div style="flex:2 1 560px;min-width:0">
+          <p style="margin:0 0 16px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a58a80">03 · Laboratorios</p>
+          <h2 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(34px,4.2vw,62px);line-height:1.02;letter-spacing:-.025em;color:#1e1728;text-wrap:balance">Laboratorios y capacidades tecnológicas</h2>
+        </div>
+        <p style="margin:0;max-width:58ch;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.65;color:#4a4256;text-wrap:pretty">Contamos con una red de laboratorios e infraestructura tecnológica especializada, articulada con universidades y centros asociados. Estas capacidades permiten desarrollar investigación aplicada, caracterizar materiales, elaborar prototipos, realizar ensayos y avanzar en la validación de nuevas soluciones para el entorno construido.</p>
+      </div>
+
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:clamp(24px,3vw,40px);margin-top:clamp(40px,5vw,72px)">
+        <div style="flex:1 1 180px;max-width:100%;display:flex;flex-direction:column">
+          <p style="margin:0 0 14px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8a8299;min-height:2.6em;display:flex;align-items:flex-end">Institución beneficiaria</p>
+          <div style="display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid #e2ddec;border-left:1px solid #e2ddec"><span style="background:#ffffff;border-right:1px solid #e2ddec;border-bottom:1px solid #e2ddec;height:clamp(110px,10vw,150px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/usach-white.png" alt="USACH" loading="lazy" style="max-width:86%;max-height:54px;width:auto;height:auto;object-fit:contain;filter:brightness(0);opacity:.75"></span></div>
+        </div>
+        <div style="flex:5 1 560px;max-width:100%;display:flex;flex-direction:column">
+          <p style="margin:0 0 14px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8a8299;min-height:2.6em;display:flex;align-items:flex-end">Instituciones asociadas</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));border-top:1px solid #e2ddec;border-left:1px solid #e2ddec">
+            <span style="background:#ffffff;border-right:1px solid #e2ddec;border-bottom:1px solid #e2ddec;height:clamp(110px,10vw,150px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/logo-utem.png" alt="UTEM" loading="lazy" style="max-width:100%;height:54px;width:auto;object-fit:contain;opacity:.75"></span>
+            <span style="background:#ffffff;border-right:1px solid #e2ddec;border-bottom:1px solid #e2ddec;height:clamp(110px,10vw,150px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/logo-uai.png" alt="Universidad Adolfo Ibáñez" loading="lazy" style="max-width:100%;height:46px;width:auto;object-fit:contain;opacity:.75"></span>
+            <span style="background:#ffffff;border-right:1px solid #e2ddec;border-bottom:1px solid #e2ddec;height:clamp(110px,10vw,150px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/logo-udec.png" alt="Universidad de Concepción" loading="lazy" style="max-width:100%;height:52px;width:auto;object-fit:contain;opacity:.75"></span>
+            <span style="background:#ffffff;border-right:1px solid #e2ddec;border-bottom:1px solid #e2ddec;height:clamp(110px,10vw,150px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/logo-ctec.png" alt="CTEC" loading="lazy" style="max-width:100%;height:42px;width:auto;object-fit:contain;opacity:.75"></span>
+            <span style="background:#ffffff;border-right:1px solid #e2ddec;border-bottom:1px solid #e2ddec;height:clamp(110px,10vw,150px);display:flex;align-items:center;justify-content:center;padding:18px"><img src="assets/logo-labva.png" alt="LABVA" loading="lazy" style="max-width:100%;height:70px;width:auto;object-fit:contain;opacity:.75"></span>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="" style="margin-top:clamp(56px,7vw,104px)">
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 24px;padding-bottom:clamp(18px,2vw,26px);border-bottom:1px solid #e2ddec">
+          <h3 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(24px,2.2vw,32px);letter-spacing:-.02em;color:#1e1728">Equipamiento clave</h3>
+          <span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a58a80;border:1px dashed #cfc6dc;border-radius:999px;padding:6px 12px">Contenido por confirmar</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(16px,2vw,28px);margin-top:clamp(24px,3vw,40px)">
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="position:relative;aspect-ratio:4/3;border:1px solid #e2ddec;background:#ffffff"><img src="assets/equipamiento/eq-1.jpg" alt="Imagen referencial de equipamiento" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+            <div><p style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:18px;color:#1e1728">Nombre del equipo</p><p style="margin:4px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#8a8299">Laboratorio · Institución</p></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="position:relative;aspect-ratio:4/3;border:1px solid #e2ddec;background:#ffffff"><img src="assets/equipamiento/eq-2.jpg" alt="Imagen referencial de equipamiento" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+            <div><p style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:18px;color:#1e1728">Nombre del equipo</p><p style="margin:4px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#8a8299">Laboratorio · Institución</p></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="position:relative;aspect-ratio:4/3;border:1px solid #e2ddec;background:#ffffff"><img src="assets/equipamiento/eq-3.jpg" alt="Imagen referencial de equipamiento" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+            <div><p style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:18px;color:#1e1728">Nombre del equipo</p><p style="margin:4px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#8a8299">Laboratorio · Institución</p></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="position:relative;aspect-ratio:4/3;border:1px solid #e2ddec;background:#ffffff"><img src="assets/equipamiento/eq-4.jpg" alt="Imagen referencial de equipamiento" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+            <div><p style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:18px;color:#1e1728">Nombre del equipo</p><p style="margin:4px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#8a8299">Laboratorio · Institución</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" data-screen-label="Servicios" style="background:#ffffff;padding:clamp(72px,9vw,140px) clamp(20px,5vw,80px)">
+    <div style="max-width:1500px;margin:0 auto">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,72px);align-items:flex-end">
+        <div style="flex:2 1 560px;min-width:0">
+          <p style="margin:0 0 16px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a58a80">04 · Servicios</p>
+          <h2 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(34px,4.2vw,62px);line-height:1.02;letter-spacing:-.025em;color:#1e1728;text-wrap:balance">Conectamos capacidades científicas y tecnológicas con los desafíos de la industria.</h2>
+        </div>
+        <p style="flex:1 1 340px;margin:0;max-width:56ch;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.65;color:#4a4256;text-wrap:pretty">Ponemos a disposición del sector productivo nuestras capacidades de investigación, desarrollo tecnológico, asistencia técnica y formación especializada para impulsar soluciones innovadoras en materiales y construcción circular.</p>
+      </div>
+
+      <div data-reveal="" style="margin-top:clamp(40px,5vw,72px);border-top:1px solid #1e1728">
+        <div style="border-bottom:1px solid #e6e2ee">
+          <button data-svc="0" onClick="{{ toggleSvc }}" aria-expanded="{{ svc0 }}" style="width:100%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(16px,2.4vw,40px);align-items:center;background:transparent;border:none;padding:clamp(22px,2.4vw,34px) 0;cursor:pointer;text-align:left;color:#1e1728" style-hover="color:#fc4425">
+            <span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;color:#a58a80">01</span>
+            <span style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,2.2vw,34px);line-height:1.12;letter-spacing:-.02em;text-wrap:pretty">Desarrollo y aceleración de soluciones tecnológicas</span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:1px solid rgba(30,23,40,.18);transform:rotate({{ rot0 }});transition:transform .45s cubic-bezier(.16,1,.3,1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+          </button>
+          <sc-if value="{{ svc0 }}" hint-placeholder-val="{{ true }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(24px,4vw,64px);padding:0 0 clamp(32px,3.6vw,52px);animation:rise .6s cubic-bezier(.16,1,.3,1) both">
+              <div style="position:relative;aspect-ratio:16/10;border:1px solid #e6e2ee;background:#f6f5f9"><span data-svc-art="" style="position:absolute;inset:0;overflow:hidden;display:block"><span aria-hidden="true" style="position:absolute;inset:-18%;background:radial-gradient(55% 70% at 68% 12%,#ffd2ff 0%,rgba(255,210,255,0) 62%),radial-gradient(48% 60% at 58% 100%,#ff7a3d 0%,rgba(255,122,61,0) 72%),radial-gradient(55% 80% at 100% 55%,#ff7fe4 0%,rgba(255,127,228,0) 70%),radial-gradient(60% 70% at 0% 100%,#ff8a7a 0%,rgba(255,138,122,0) 70%),linear-gradient(135deg,#ff6aa0 0%,#ff5f86 48%,#f9506a 100%);animation:svcDrift 16s ease-in-out infinite alternate;will-change:transform"></span><span aria-hidden="true" style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.4) 1px,transparent 1.5px);background-size:22px 22px;-webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 10%,transparent 72%);mask-image:radial-gradient(ellipse at 50% 50%,#000 10%,transparent 72%);opacity:.55"></span><svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"><circle cx="400" cy="250" r="168" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/><circle cx="400" cy="250" r="226" stroke="rgba(255,255,255,.28)" stroke-width="1.2" stroke-dasharray="2 9" style="transform-box:view-box;transform-origin:400px 250px;animation:svcCounter 90s linear infinite"/><circle cx="400" cy="250" r="118" fill="rgba(255,255,255,.1)" stroke="none"/><circle cx="628" cy="220" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-0s"/><circle cx="178" cy="310" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-0.9s"/><circle cx="460" cy="476" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-1.8s"/><circle cx="310" cy="39" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-2.7s"/><g style="transform-box:view-box;transform-origin:400px 250px;animation:svcSpin 54s linear infinite"><g transform="translate(530.6 144.3)"><g style="transform-box:fill-box;transform-origin:center;animation:svcCounter 54s linear infinite"><circle r="40" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><g transform="translate(-18 -18) scale(1.5)" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></g></g></g><g transform="translate(426.3 415.9)"><g style="transform-box:fill-box;transform-origin:center;animation:svcCounter 54s linear infinite"><circle r="40" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><g transform="translate(-18 -18) scale(1.5)" stroke-width="1.7"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></g></g></g><g transform="translate(243.2 189.8)"><g style="transform-box:fill-box;transform-origin:center;animation:svcCounter 54s linear infinite"><circle r="40" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><g transform="translate(-18 -18) scale(1.5)" stroke-width="1.7"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></g></g></g></g><g style="transform-box:fill-box;transform-origin:center;animation:svcBob 6s ease-in-out infinite"><circle cx="400" cy="250" r="88" fill="rgba(255,255,255,.22)" stroke="rgba(255,255,255,.85)" stroke-width="1.6"/><g transform="translate(354 204) scale(3.833)" stroke-width="1.35"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></g></g></svg></span></div>
+              <div style="display:flex;flex-direction:column;gap:22px">
+                <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.65;color:#2e2638;text-wrap:pretty">Desarrollamos y validamos soluciones tecnológicas a partir de los desafíos y necesidades de empresas e instituciones, desde la investigación aplicada hasta la elaboración de prototipos y pruebas a escala piloto.</p>
+                <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid #e6e2ee">
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Investigación y desarrollo aplicado en materiales circulares</li>
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Diseño y elaboración de prototipos</li>
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Validación técnica a escala piloto</li>
+                </ul>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+        <div style="border-bottom:1px solid #e6e2ee">
+          <button data-svc="1" onClick="{{ toggleSvc }}" aria-expanded="{{ svc1 }}" style="width:100%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(16px,2.4vw,40px);align-items:center;background:transparent;border:none;padding:clamp(22px,2.4vw,34px) 0;cursor:pointer;text-align:left;color:#1e1728" style-hover="color:#fc4425">
+            <span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;color:#a58a80">02</span>
+            <span style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,2.2vw,34px);line-height:1.12;letter-spacing:-.02em;text-wrap:pretty">Asistencia técnica y consultoría</span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:1px solid rgba(30,23,40,.18);transform:rotate({{ rot1 }});transition:transform .45s cubic-bezier(.16,1,.3,1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+          </button>
+          <sc-if value="{{ svc1 }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(24px,4vw,64px);padding:0 0 clamp(32px,3.6vw,52px);animation:rise .6s cubic-bezier(.16,1,.3,1) both">
+              <div style="position:relative;aspect-ratio:16/10;border:1px solid #e6e2ee;background:#f6f5f9"><span data-svc-art="" style="position:absolute;inset:0;overflow:hidden;display:block"><span aria-hidden="true" style="position:absolute;inset:-18%;background:radial-gradient(55% 70% at 68% 12%,#ffd2ff 0%,rgba(255,210,255,0) 62%),radial-gradient(48% 60% at 58% 100%,#ff7a3d 0%,rgba(255,122,61,0) 72%),radial-gradient(55% 80% at 100% 55%,#ff7fe4 0%,rgba(255,127,228,0) 70%),radial-gradient(60% 70% at 0% 100%,#ff8a7a 0%,rgba(255,138,122,0) 70%),linear-gradient(135deg,#ff6aa0 0%,#ff5f86 48%,#f9506a 100%);animation:svcDrift 16s ease-in-out infinite alternate;will-change:transform"></span><span aria-hidden="true" style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.4) 1px,transparent 1.5px);background-size:22px 22px;-webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 10%,transparent 72%);mask-image:radial-gradient(ellipse at 50% 50%,#000 10%,transparent 72%);opacity:.55"></span><svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"><circle cx="400" cy="250" r="168" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/><circle cx="400" cy="250" r="226" stroke="rgba(255,255,255,.28)" stroke-width="1.2" stroke-dasharray="2 9" style="transform-box:view-box;transform-origin:400px 250px;animation:svcCounter 90s linear infinite"/><circle cx="400" cy="250" r="118" fill="rgba(255,255,255,.1)" stroke="none"/><circle cx="628" cy="220" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-0s"/><circle cx="178" cy="310" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-0.9s"/><circle cx="460" cy="476" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-1.8s"/><circle cx="310" cy="39" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-2.7s"/><g style="transform-box:view-box;transform-origin:400px 250px;animation:svcSpin 54s linear infinite"><g transform="translate(561.5 203.7)"><g style="transform-box:fill-box;transform-origin:center;animation:svcCounter 54s linear infinite"><circle r="40" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><g transform="translate(-18 -18) scale(1.5)" stroke-width="1.7"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></g></g></g><g transform="translate(359.4 413.0)"><g style="transform-box:fill-box;transform-origin:center;animation:svcCounter 54s linear infinite"><circle r="40" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><g transform="translate(-18 -18) scale(1.5)" stroke-width="1.7"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></g></g></g><g transform="translate(279.2 133.3)"><g style="transform-box:fill-box;transform-origin:center;animation:svcCounter 54s linear infinite"><circle r="40" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><g transform="translate(-18 -18) scale(1.5)" stroke-width="1.7"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></g></g></g></g><g style="transform-box:fill-box;transform-origin:center;animation:svcBob 6s ease-in-out infinite"><circle cx="400" cy="250" r="88" fill="rgba(255,255,255,.22)" stroke="rgba(255,255,255,.85)" stroke-width="1.6"/><g transform="translate(354 204) scale(3.833)" stroke-width="1.35"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></g></g></svg></span></div>
+              <div style="display:flex;flex-direction:column;gap:22px">
+                <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.65;color:#2e2638;text-wrap:pretty">Apoyamos a empresas e instituciones en la identificación de oportunidades de mejora y la implementación de estrategias de economía circular, mediante asesorías y diagnósticos especializados.</p>
+                <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid #e6e2ee">
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Diagnóstico de residuos y cadenas de valor</li>
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Estrategias de economía circular</li>
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Evaluación de soluciones constructivas circulares</li>
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Asesoría en formulación y postulación a instrumentos de financiamiento</li>
+                </ul>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+        <div style="border-bottom:1px solid #e6e2ee">
+          <button data-svc="2" onClick="{{ toggleSvc }}" aria-expanded="{{ svc2 }}" style="width:100%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(16px,2.4vw,40px);align-items:center;background:transparent;border:none;padding:clamp(22px,2.4vw,34px) 0;cursor:pointer;text-align:left;color:#1e1728" style-hover="color:#fc4425">
+            <span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;color:#a58a80">03</span>
+            <span style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,2.2vw,34px);line-height:1.12;letter-spacing:-.02em;text-wrap:pretty">Capacitación y formación especializada</span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:1px solid rgba(30,23,40,.18);transform:rotate({{ rot2 }});transition:transform .45s cubic-bezier(.16,1,.3,1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+          </button>
+          <sc-if value="{{ svc2 }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(24px,4vw,64px);padding:0 0 clamp(32px,3.6vw,52px);animation:rise .6s cubic-bezier(.16,1,.3,1) both">
+              <div style="position:relative;aspect-ratio:16/10;border:1px solid #e6e2ee;background:#f6f5f9"><span data-svc-art="" style="position:absolute;inset:0;overflow:hidden;display:block"><span aria-hidden="true" style="position:absolute;inset:-18%;background:radial-gradient(55% 70% at 68% 12%,#ffd2ff 0%,rgba(255,210,255,0) 62%),radial-gradient(48% 60% at 58% 100%,#ff7a3d 0%,rgba(255,122,61,0) 72%),radial-gradient(55% 80% at 100% 55%,#ff7fe4 0%,rgba(255,127,228,0) 70%),radial-gradient(60% 70% at 0% 100%,#ff8a7a 0%,rgba(255,138,122,0) 70%),linear-gradient(135deg,#ff6aa0 0%,#ff5f86 48%,#f9506a 100%);animation:svcDrift 16s ease-in-out infinite alternate;will-change:transform"></span><span aria-hidden="true" style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.4) 1px,transparent 1.5px);background-size:22px 22px;-webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 10%,transparent 72%);mask-image:radial-gradient(ellipse at 50% 50%,#000 10%,transparent 72%);opacity:.55"></span><svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"><circle cx="400" cy="250" r="168" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/><circle cx="400" cy="250" r="226" stroke="rgba(255,255,255,.28)" stroke-width="1.2" stroke-dasharray="2 9" style="transform-box:view-box;transform-origin:400px 250px;animation:svcCounter 90s linear infinite"/><circle cx="400" cy="250" r="118" fill="rgba(255,255,255,.1)" stroke="none"/><circle cx="628" cy="220" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-0s"/><circle cx="178" cy="310" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-0.9s"/><circle cx="460" cy="476" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-1.8s"/><circle cx="310" cy="39" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-2.7s"/><g style="transform-box:view-box;transform-origin:400px 250px;animation:svcSpin 54s linear infinite"><g transform="translate(566.7 270.5)"><g style="transform-box:fill-box;transform-origin:center;animation:svcCounter 54s linear infinite"><circle r="40" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><g transform="translate(-18 -18) scale(1.5)" stroke-width="1.7"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></g></g></g><g transform="translate(298.9 384.2)"><g style="transform-box:fill-box;transform-origin:center;animation:svcCounter 54s linear infinite"><circle r="40" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><g transform="translate(-18 -18) scale(1.5)" stroke-width="1.7"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></g></g></g><g transform="translate(334.4 95.4)"><g style="transform-box:fill-box;transform-origin:center;animation:svcCounter 54s linear infinite"><circle r="40" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><g transform="translate(-18 -18) scale(1.5)" stroke-width="1.7"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></g></g></g></g><g style="transform-box:fill-box;transform-origin:center;animation:svcBob 6s ease-in-out infinite"><circle cx="400" cy="250" r="88" fill="rgba(255,255,255,.22)" stroke="rgba(255,255,255,.85)" stroke-width="1.6"/><g transform="translate(354 204) scale(3.833)" stroke-width="1.35"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></g></g></svg></span></div>
+              <div style="display:flex;flex-direction:column;gap:22px">
+                <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.65;color:#2e2638;text-wrap:pretty">Fortalecemos conocimientos y capacidades técnicas en materiales, tecnologías y procesos vinculados con la economía circular y la construcción sostenible.</p>
+                <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid #e6e2ee">
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Programas de formación en materiales circulares</li>
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Capacitación en valorización de materias primas secundarias</li>
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Talleres especializados</li>
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Transferencia de conocimientos y buenas prácticas</li>
+                </ul>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+        <div style="border-bottom:1px solid #e6e2ee">
+          <button data-svc="3" onClick="{{ toggleSvc }}" aria-expanded="{{ svc3 }}" style="width:100%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(16px,2.4vw,40px);align-items:center;background:transparent;border:none;padding:clamp(22px,2.4vw,34px) 0;cursor:pointer;text-align:left;color:#1e1728" style-hover="color:#fc4425">
+            <span style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;color:#a58a80">04</span>
+            <span style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,2.2vw,34px);line-height:1.12;letter-spacing:-.02em;text-wrap:pretty">Servicios de laboratorio e investigación aplicada</span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:1px solid rgba(30,23,40,.18);transform:rotate({{ rot3 }});transition:transform .45s cubic-bezier(.16,1,.3,1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+          </button>
+          <sc-if value="{{ svc3 }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(24px,4vw,64px);padding:0 0 clamp(32px,3.6vw,52px);animation:rise .6s cubic-bezier(.16,1,.3,1) both">
+              <div style="position:relative;aspect-ratio:16/10;border:1px solid #e6e2ee;background:#f6f5f9"><span data-svc-art="" style="position:absolute;inset:0;overflow:hidden;display:block"><span aria-hidden="true" style="position:absolute;inset:-18%;background:radial-gradient(55% 70% at 68% 12%,#ffd2ff 0%,rgba(255,210,255,0) 62%),radial-gradient(48% 60% at 58% 100%,#ff7a3d 0%,rgba(255,122,61,0) 72%),radial-gradient(55% 80% at 100% 55%,#ff7fe4 0%,rgba(255,127,228,0) 70%),radial-gradient(60% 70% at 0% 100%,#ff8a7a 0%,rgba(255,138,122,0) 70%),linear-gradient(135deg,#ff6aa0 0%,#ff5f86 48%,#f9506a 100%);animation:svcDrift 16s ease-in-out infinite alternate;will-change:transform"></span><span aria-hidden="true" style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.4) 1px,transparent 1.5px);background-size:22px 22px;-webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 10%,transparent 72%);mask-image:radial-gradient(ellipse at 50% 50%,#000 10%,transparent 72%);opacity:.55"></span><svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"><circle cx="400" cy="250" r="168" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/><circle cx="400" cy="250" r="226" stroke="rgba(255,255,255,.28)" stroke-width="1.2" stroke-dasharray="2 9" style="transform-box:view-box;transform-origin:400px 250px;animation:svcCounter 90s linear infinite"/><circle cx="400" cy="250" r="118" fill="rgba(255,255,255,.1)" stroke="none"/><circle cx="628" cy="220" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-0s"/><circle cx="178" cy="310" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-0.9s"/><circle cx="460" cy="476" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-1.8s"/><circle cx="310" cy="39" r="4" fill="#ffffff" stroke="none" style="animation:svcPulse 3.6s ease-in-out infinite;animation-delay:-2.7s"/><g style="transform-box:view-box;transform-origin:400px 250px;animation:svcSpin 54s linear infinite"><g transform="translate(545.5 334.0)"><g style="transform-box:fill-box;transform-origin:center;animation:svcCounter 54s linear infinite"><circle r="40" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><g transform="translate(-18 -18) scale(1.5)" stroke-width="1.7"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></g></g></g><g transform="translate(254.5 334.0)"><g style="transform-box:fill-box;transform-origin:center;animation:svcCounter 54s linear infinite"><circle r="40" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><g transform="translate(-18 -18) scale(1.5)" stroke-width="1.7"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/></g></g></g><g transform="translate(400.0 82.0)"><g style="transform-box:fill-box;transform-origin:center;animation:svcCounter 54s linear infinite"><circle r="40" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.7)" stroke-width="1.5"/><g transform="translate(-18 -18) scale(1.5)" stroke-width="1.7"><path d="M14.5 2v17.5c0 1.4-1.1 2.5-2.5 2.5s-2.5-1.1-2.5-2.5V2"/><path d="M8.5 2h7"/><path d="M14.5 16h-5"/></g></g></g></g><g style="transform-box:fill-box;transform-origin:center;animation:svcBob 6s ease-in-out infinite"><circle cx="400" cy="250" r="88" fill="rgba(255,255,255,.22)" stroke="rgba(255,255,255,.85)" stroke-width="1.6"/><g transform="translate(354 204) scale(3.833)" stroke-width="1.35"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></g></g></svg></span></div>
+              <div style="display:flex;flex-direction:column;gap:22px">
+                <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.65;color:#2e2638;text-wrap:pretty">Facilitamos el acceso a capacidades de infraestructura, equipamiento y conocimiento especializado para el análisis, caracterización y evaluación de materiales y soluciones.</p>
+                <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid #e6e2ee">
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Caracterización y ensayos de materiales reciclados y biobasados</li>
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Análisis de Ciclo de Vida (ACV)</li>
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Declaraciones Ambientales de Producto (DAP)</li>
+                  <li style="display:flex;gap:14px;align-items:baseline;padding:14px 0;border-bottom:1px solid #e6e2ee;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#1e1728"><span style="flex:0 0 auto;width:7px;height:7px;background:#fc4425;transform:translateY(-2px)"></span>Evaluación y control de calidad de materiales y procesos</li>
+                </ul>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="CTA" style="position:relative;overflow:hidden;background:#16111f;color:#ffffff;padding:clamp(80px,10vw,150px) clamp(20px,5vw,80px)">
+    <div aria-hidden="true" style="position:absolute;bottom:clamp(-560px,-32vw,-300px);left:clamp(-460px,-24vw,-220px);width:clamp(560px,60vw,1060px);aspect-ratio:1;background-image:url('assets/fondo-blob-opt.webp');background-size:contain;background-position:center;background-repeat:no-repeat;opacity:.4;mix-blend-mode:screen;animation:float 26s ease-in-out infinite;pointer-events:none"></div>
+    <div data-reveal="" style="position:relative;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(20px,2.4vw,30px)">
+      <h2 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(32px,4vw,60px);line-height:1.06;letter-spacing:-.025em;text-wrap:balance">¿Tienes un desafío tecnológico o buscas desarrollar una solución para tu empresa?</h2>
+      <p style="margin:0;max-width:60ch;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(16px,1.25vw,19px);line-height:1.6;color:rgba(255,255,255,.72);text-wrap:pretty">Conversemos sobre cómo las capacidades de CIMAC pueden ayudarte a desarrollar nuevas soluciones en materiales y construcción circular.</p>
+      <a data-cta="" href="contacto.html" style="margin-top:8px;position:relative;overflow:hidden;display:inline-flex;align-items:center;background:#ffffff;color:#1e1728;border:1px solid #ffffff;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:15px;padding:17px 30px;border-radius:999px;transition:color .35s ease,border-color .4s ease"><span data-cta-sweep="" style="position:absolute;inset:0;background:#fc4425;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none"></span><span style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px">Conversemos sobre tu proyecto<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span></a>
+    </div>
+  </section>
+
+  <footer style="background:#16111f;color:#ffffff;padding:clamp(20px,3vw,44px) clamp(16px,3.5vw,48px) clamp(24px,3vw,44px)">
+    <div style="position:relative;overflow:hidden;border-radius:clamp(18px,2vw,28px);border:1px solid rgba(255,255,255,.07);background:#1a1424">
+      <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,3vw,48px);align-items:center;padding:clamp(28px,3.4vw,52px) clamp(22px,3vw,56px);border-bottom:1px solid rgba(255,255,255,.08)">
+        <div>
+          <p style="margin:0 0 12px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42)">Newsletter</p>
+          <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(15px,1.2vw,18px);line-height:1.55;color:rgba(255,255,255,.82);max-width:34ch">Noticias del centro, convocatorias abiertas y avances de nuestras líneas de investigación.</p>
+        </div>
+        <form onSubmit="{{ onSubscribe }}" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end">
+          <span style="position:relative;display:flex;align-items:center;flex:1 1 240px;max-width:360px">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:22px"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 6.5 8.5 6 8.5-6"></path></svg>
+            <input type="email" placeholder="tu@correo.cl" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:999px;color:#ffffff;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;padding:17px 24px 17px 52px;transition:border-color .3s ease,background .3s ease" style-focus="border-color:rgba(252,68,37,.7);background:rgba(255,255,255,.08)">
+          </span>
+          <button data-cta="" type="submit" style="position:relative;overflow:hidden;background:#ffffff;color:#1e1728;border:1px solid #ffffff;border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:15px;padding:17px 32px;cursor:pointer;transition:color .35s ease,border-color .4s ease"><span data-cta-sweep="" style="position:absolute;inset:0;background:#fc4425;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none"></span><span style="position:relative;z-index:1">{{ subscribeLabel }}</span></button>
+        </form>
+      </div>
+      <div style="position:relative;display:flex;flex-wrap:wrap;gap:clamp(28px,3.4vw,56px);padding:clamp(32px,4vw,64px) clamp(22px,3vw,56px)">
+        <div style="flex:1 1 320px;min-width:0;max-width:460px">
+          <div style="display:flex;align-items:center;gap:clamp(12px,1.6vw,22px);flex-wrap:nowrap;min-width:0">
+            <img src="assets/usach-white.png" alt="Universidad de Santiago de Chile" style="flex:0 1 auto;min-width:0;width:auto;height:auto;max-height:52px;max-width:48%;display:block;opacity:.85">
+            <span style="flex:0 0 1px;width:1px;height:44px;background:rgba(255,255,255,.16);display:block"></span>
+            <img src="assets/anid-white.png" alt="ANID · Agencia Nacional de Investigación y Desarrollo" style="flex:0 1 auto;min-width:0;width:auto;height:auto;max-height:68px;max-width:26%;display:block;opacity:.8">
+            <img src="assets/ministerio-white.png" alt="Ministerio de Ciencia, Tecnología, Conocimiento e Innovación · Gobierno de Chile" style="flex:0 1 auto;min-width:0;width:auto;height:auto;max-height:68px;max-width:26%;display:block;opacity:.8">
+          </div>
+          <p style="margin:26px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.6;color:rgba(255,255,255,.6);max-width:38ch">Centro de Innovación en Tecnología y Diseño de Materiales para el Entorno Construido.</p>
+        </div>
+        <div style="flex:1 1 170px;min-width:0">
+          <p style="margin:0 0 22px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42)">Áreas</p>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <a href="que-hacemos.html#investigacion" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Investigación</a>
+            <a href="que-hacemos.html#transferencia" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Transferencia tecnológica</a>
+            <a href="que-hacemos.html#laboratorios" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Laboratorios</a>
+            <a href="que-hacemos.html#servicios" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Servicios</a>
+            <a href="index.html#proyectos" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Proyectos</a>
+          </div>
+        </div>
+        <div style="flex:1 1 170px;min-width:0">
+          <p style="margin:0 0 22px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42)">Centro</p>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <a href="nosotros.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Nosotros</a>
+            <a href="noticias-y-eventos.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Noticias y Eventos</a>
+            <a href="contacto.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Contacto</a>
+            <a href="index.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Transparencia</a>
+          </div>
+        </div>
+        <div style="flex:1 1 190px;min-width:0">
+          <p style="margin:0 0 22px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42)">Conecta</p>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;gap:12px;margin-bottom:6px">
+              <a href="https://www.instagram.com/centro.cimac/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:999px;border:1px solid rgba(255,255,255,.28);color:#ffffff;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#ffffff;border-color:#ffffff;color:#16111f"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg></a>
+              <a href="https://www.linkedin.com/in/centro-cimac/" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:999px;border:1px solid rgba(255,255,255,.28);color:#ffffff;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#ffffff;border-color:#ffffff;color:#16111f"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M7.5 10.5V17M7.5 7.2v.1M11.5 17v-3.6a2.4 2.4 0 0 1 4.8 0V17"></path></svg></a>
+            </div>
+            <a href="mailto:contacto.cimac@usach.cl" style="display:flex;align-items:center;gap:11px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 6.5 8.5 6 8.5-6"></path></svg>contacto.cimac@usach.cl</a>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;display:flex;flex-wrap:wrap;gap:14px 28px;justify-content:space-between;align-items:center;padding:clamp(20px,2.2vw,28px) clamp(22px,3vw,56px);border-top:1px solid rgba(255,255,255,.08)">
+        <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)">© 2026 CIMAC · Universidad de Santiago de Chile</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center">
+          <a href="#" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)" style-hover="color:#ffffff">Términos y condiciones</a>
+          <a href="#" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)" style-hover="color:#ffffff">Política de privacidad</a>
+          <a href="mailto:contacto.cimac@usach.cl" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)" style-hover="color:#ffffff">contacto.cimac@usach.cl</a>
+          <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)">Desarrollado por <a href="https://deltadigital.cl" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7)" style-hover="color:#fc4425">Delta Digital</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ showWhatsapp }}" hint-placeholder-val="{{ true }}">
+    <a href="https://wa.me/56200000000" target="_blank" rel="noopener" aria-label="WhatsApp" style="position:fixed;right:clamp(16px,2.4vw,32px);bottom:clamp(16px,2.4vw,32px);z-index:55;width:50px;height:50px;border-radius:13px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(252,68,37,.34);transition:transform .35s cubic-bezier(.16,1,.3,1)" style-hover="transform:translateY(-4px) scale(1.04)">
+      <img src="assets/whatsapp.png" alt="" width="50" height="50" style="display:block;width:100%;height:100%;object-fit:cover">
+    </a>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showWhatsapp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
+class Component extends DCLogic {
+  state = {
+    menu: false,
+    subscribed: false,
+    svc: 0,
+    isDesktop: typeof window !== 'undefined' ? window.innerWidth >= 1000 : true
+  };
+
+  constructor(props) {
+    super(props);
+    this.root = React.createRef();
+  }
+
+  bindHovers() {
+    const root = this.root.current;
+    if (!root) return;
+    root.querySelectorAll('[data-cta]').forEach(el => {
+      if (el.dataset.bound) return;
+      el.dataset.bound = '1';
+      const sweep = el.querySelector('[data-cta-sweep]');
+      const c = el.style.color, b = el.style.borderColor;
+      const paint = on => {
+        if (sweep) { sweep.style.transformOrigin = on ? 'left' : 'right'; sweep.style.transform = on ? 'scaleX(1)' : 'scaleX(0)'; }
+        el.style.color = on ? '#ffffff' : c;
+        el.style.borderColor = on ? '#fc4425' : b;
+      };
+      ['mouseenter', 'focus'].forEach(e => el.addEventListener(e, () => paint(true)));
+      ['mouseleave', 'blur'].forEach(e => el.addEventListener(e, () => paint(false)));
+    });
+    root.querySelectorAll('[data-hcard]').forEach(card => {
+      if (card.dataset.bound) return;
+      card.dataset.bound = '1';
+      const q = s => card.querySelector(s);
+      const bar = q('[data-hbar]'), fill = q('[data-hfill]'), num = q('[data-hnum]'), title = q('[data-htitle]'), zoom = q('[data-hzoom]');
+      const numBase = num && num.style.color, titleBase = title && title.style.color;
+      const paint = on => {
+        if (bar) bar.style.transform = on ? 'scaleY(1)' : 'scaleY(0)';
+        if (fill) fill.style.width = on ? '100%' : '0%';
+        if (num) num.style.color = on ? '#fc4425' : numBase;
+        if (title) title.style.color = on ? '#fc4425' : titleBase;
+        if (zoom) zoom.style.transform = on ? 'scale(1.06)' : 'scale(1)';
+      };
+      card.addEventListener('mouseenter', () => paint(true));
+      card.addEventListener('mouseleave', () => paint(false));
+    });
+  }
+
+  setupReveal() {
+    const root = this.root.current;
+    if (!root || !('IntersectionObserver' in window)) return;
+    if (!this.io) this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    root.querySelectorAll('[data-reveal]').forEach(el => {
+      if (el.dataset.rv) return;
+      el.dataset.rv = '1';
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1)';
+      this.io.observe(el);
+    });
+  }
+
+  tick = () => {
+    const root = this.root.current;
+    if (root) {
+      const hero = root.querySelector('[data-hero]');
+      const header = root.querySelector('[data-header]');
+      if (hero && header) {
+        const solid = hero.getBoundingClientRect().top < -40;
+        if (solid !== this.solid) {
+          this.solid = solid;
+          header.style.background = solid ? 'rgba(22,17,31,.92)' : 'transparent';
+          header.style.backdropFilter = solid ? 'saturate(140%) blur(14px)' : 'none';
+          header.style.borderBottomColor = solid ? 'rgba(255,255,255,.1)' : 'transparent';
+        }
+      }
+    }
+    this.raf = requestAnimationFrame(this.tick);
+  };
+
+  initLenis(tries) {
+    const L = window.Lenis || (window.lenis && window.lenis.default);
+    if (!L) { if (tries < 40) this.lenisTo = setTimeout(() => this.initLenis(tries + 1), 100); return; }
+    if (this.lenis) return;
+    const opts = { duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true };
+    const bodyScrolls = document.body.scrollHeight > document.body.clientHeight + 1 && /auto|scroll/.test(getComputedStyle(document.body).overflowY);
+    if (bodyScrolls) { opts.wrapper = document.body; opts.content = document.body; }
+    this.lenis = new L(opts);
+    const raf = t => { if (!this.lenis) return; this.lenis.raf(t); this.lenisRaf = requestAnimationFrame(raf); };
+    this.lenisRaf = requestAnimationFrame(raf);
+  }
+
+  scrollToId(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (this.lenis) this.lenis.scrollTo(el, { offset: -70 });
+    else window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
+  }
+
+  componentDidMount() {
+    this.bindHovers();
+    this.setupReveal();
+    this.raf = requestAnimationFrame(this.tick);
+    this.initLenis(0);
+    const hash = window.location.hash.slice(1);
+    if (hash) this.hashTo = setTimeout(() => this.scrollToId(hash), 500);
+    this.onResize = () => {
+      const d = window.innerWidth >= 1000;
+      if (d !== this.state.isDesktop) this.setState({ isDesktop: d });
+    };
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentDidUpdate() { this.bindHovers(); this.setupReveal(); if (this.lenis) requestAnimationFrame(() => { if (this.lenis) this.lenis.resize(); }); }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    if (this.lenisRaf) cancelAnimationFrame(this.lenisRaf);
+    clearTimeout(this.lenisTo);
+    clearTimeout(this.hashTo);
+    if (this.io) this.io.disconnect();
+    window.removeEventListener('resize', this.onResize);
+    if (this.lenis) { this.lenis.destroy(); this.lenis = null; }
+  }
+
+  renderVals() {
+    const s = this.state.svc;
+    return {
+      root: this.root,
+      menu: this.state.menu,
+      isDesktop: this.state.isDesktop,
+      svc0: s === 0, svc1: s === 1, svc2: s === 2, svc3: s === 3,
+      rot0: s === 0 ? '45deg' : '0deg', rot1: s === 1 ? '45deg' : '0deg', rot2: s === 2 ? '45deg' : '0deg', rot3: s === 3 ? '45deg' : '0deg',
+      showWhatsapp: this.props.showWhatsapp !== false,
+      subscribeLabel: this.state.subscribed ? 'Suscrito' : 'Suscribirme',
+      toggleMenu: () => this.setState(st => ({ menu: !st.menu })),
+      toggleSvc: e => {
+        const i = parseInt(e.currentTarget.dataset.svc, 10);
+        this.setState(st => ({ svc: st.svc === i ? -1 : i }));
+      },
+      goTo: e => { e.preventDefault(); this.scrollToId(e.currentTarget.dataset.goto); },
+      onSubscribe: e => { e.preventDefault(); this.setState({ subscribed: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

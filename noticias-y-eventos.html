@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preload" href="assets/fonts/CamptonBook.otf" as="font" type="font/otf" crossorigin="anonymous">
+<link rel="preload" href="assets/fonts/CamptonMedium.otf" as="font" type="font/otf" crossorigin="anonymous">
+<link rel="preload" href="assets/fonts/CamptonSemiBold.otf" as="font" type="font/otf" crossorigin="anonymous">
+<link rel="preload" href="assets/fonts/EuclidFlexSemiBold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="assets/fonts/EuclidFlexBold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="stylesheet" href="_ds/industry-5e022a0e-b71f-4223-b93c-179ce59a54f1/styles.css">
+<script src="_ds/industry-5e022a0e-b71f-4223-b93c-179ce59a54f1/_ds_bundle.js"></script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+@font-face{font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/EuclidFlexMedium.ttf') format('truetype');font-weight:500;font-display:block}
+@font-face{font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/EuclidFlexSemiBold.ttf') format('truetype');font-weight:600;font-display:block}
+@font-face{font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/EuclidFlexBold.ttf') format('truetype');font-weight:700;font-display:block}
+@font-face{font-family:'Campton','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/CamptonBook.otf') format('opentype');font-weight:400;font-display:block}
+@font-face{font-family:'Campton','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/CamptonMedium.otf') format('opentype');font-weight:500;font-display:block}
+@font-face{font-family:'Campton','Helvetica Neue',Arial,sans-serif;src:url('assets/fonts/CamptonSemiBold.otf') format('opentype');font-weight:600;font-display:block}
+body{margin:0;background:#ffffff;color:#1e1728;font-family:'Campton','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#654a9e;text-decoration:none;transition:color .25s ease}
+a:hover{color:#fc4425}
+::selection{background:rgba(252,68,37,.22)}
+:focus-visible{outline:2px solid #fc4425;outline-offset:3px}
+input::placeholder{color:rgba(255,255,255,.45);font-family:'Campton'}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes linkIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(-2%,3%,0) rotate(8deg)}}
+</style>
+</helmet>
+
+<div ref="{{ root }}" style="position:relative;width:100%;overflow:clip">
+
+  <header data-header="" style="position:fixed;top:0;left:0;right:0;z-index:60;transition:background .35s ease,border-color .35s ease;border-bottom:1px solid transparent">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px clamp(20px,5vw,80px)">
+      <a href="index.html" style="display:block;flex:0 0 auto">
+        <img src="assets/cimac-logo-slogan-white.png" alt="CIMAC · Centro de Innovación en Tecnología de Materiales" style="height:clamp(40px,3.6vw,52px);width:auto;display:block">
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex;align-items:center;gap:clamp(14px,1.9vw,32px)">
+          <a href="index.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,.86)" style-hover="color:#ffffff">Inicio</a>
+          <a href="que-hacemos.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,.86)" style-hover="color:#ffffff">¿Qué hacemos?</a>
+          <a href="index.html#proyectos" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,.86)" style-hover="color:#ffffff">Proyectos</a>
+          <a href="nosotros.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,.86)" style-hover="color:#ffffff">Nosotros</a>
+          <a href="noticias-y-eventos.html" aria-current="page" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;color:#ffffff;padding-bottom:4px;border-bottom:1px solid #fc4425">Noticias y Eventos</a>
+        </nav>
+      </sc-if>
+      <div style="display:flex;align-items:center;gap:10px;flex:0 0 auto">
+        <a data-cta="" href="contacto.html" style="position:relative;overflow:hidden;display:inline-flex;align-items:center;background:#ffffff;color:#1e1728;border:1px solid #ffffff;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;padding:13px 22px;border-radius:999px;white-space:nowrap;transition:color .35s ease,border-color .4s ease"><span data-cta-sweep="" style="position:absolute;inset:0;background:#fc4425;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none"></span><span style="position:relative;z-index:1">Contáctanos</span></a>
+        <button onClick="{{ toggleMenu }}" aria-label="Menú" style="display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:46px;height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.28);background:transparent;border-radius:999px;cursor:pointer;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#ffffff;background:rgba(255,255,255,.08)">
+          <span style="display:block;height:1.5px;background:#ffffff;border-radius:2px"></span>
+          <span style="display:block;height:1.5px;background:#ffffff;border-radius:2px"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <sc-if value="{{ menu }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:70;background:#16111f;display:flex;flex-direction:column;padding:clamp(20px,5vw,80px);animation:linkIn .4s both">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <img src="assets/cimac-logo-slogan-white.png" alt="CIMAC" style="height:44px;width:auto">
+        <button onClick="{{ toggleMenu }}" aria-label="Cerrar" style="width:46px;height:34px;border:1px solid rgba(255,255,255,.28);background:transparent;border-radius:999px;color:#ffffff;font-size:20px;cursor:pointer;font-family:'Campton','Helvetica Neue',Arial,sans-serif">×</button>
+      </div>
+      <nav style="margin-top:auto;margin-bottom:auto;display:flex;flex-direction:column;gap:clamp(6px,1.4vh,14px)">
+        <a href="que-hacemos.html" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#ffffff;animation:linkIn .55s both;animation-delay:.05s" style-hover="color:#fc4425">¿Qué hacemos?</a>
+        <a href="index.html#proyectos" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#ffffff;animation:linkIn .55s both;animation-delay:.11s" style-hover="color:#fc4425">Proyectos</a>
+        <a href="nosotros.html" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#ffffff;animation:linkIn .55s both;animation-delay:.17s" style-hover="color:#fc4425">Nosotros</a>
+        <a href="noticias-y-eventos.html" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#fc4425;animation:linkIn .55s both;animation-delay:.23s">Noticias y Eventos</a>
+        <a href="contacto.html" style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(30px,6vw,64px);line-height:1.05;letter-spacing:-.02em;color:#ffffff;animation:linkIn .55s both;animation-delay:.29s" style-hover="color:#fc4425">Contacto</a>
+      </nav>
+      <div style="display:flex;flex-wrap:wrap;gap:24px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;color:rgba(255,255,255,.5);animation:linkIn .6s both;animation-delay:.4s">
+        <span>contacto.cimac@usach.cl</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <section data-hero="" data-screen-label="Hero" style="position:relative;overflow:hidden;background:#1e1728;color:#ffffff;padding:clamp(140px,15vw,210px) clamp(20px,5vw,80px) clamp(64px,7vw,104px)">
+    <div aria-hidden="true" style="position:absolute;top:clamp(-520px,-30vw,-280px);right:clamp(-460px,-24vw,-220px);width:clamp(560px,62vw,1100px);aspect-ratio:1;background-image:url('assets/fondo-blob-opt.webp');background-size:contain;background-position:center;background-repeat:no-repeat;opacity:.45;mix-blend-mode:screen;animation:float 24s ease-in-out infinite;pointer-events:none"></div>
+    <div style="position:relative;max-width:1500px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(22px,2.4vw,32px)">
+      <nav aria-label="Ruta" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:13px;color:rgba(255,255,255,.5);animation:rise .8s cubic-bezier(.16,1,.3,1) both">
+        <a href="index.html" style="color:rgba(255,255,255,.5)" style-hover="color:#ffffff">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span style="color:rgba(255,255,255,.82)">Noticias y Eventos</span>
+      </nav>
+      <h1 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(48px,7vw,112px);line-height:.98;letter-spacing:-.03em;animation:rise .9s cubic-bezier(.16,1,.3,1) both;animation-delay:.08s">Noticias y Eventos</h1>
+      <p style="margin:0;max-width:56ch;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(18px,1.45vw,22px);line-height:1.55;color:rgba(255,255,255,.76);text-wrap:pretty;animation:rise .9s cubic-bezier(.16,1,.3,1) both;animation-delay:.16s">Actualidad del Centro, columnas de opinión y la agenda de actividades de CIMAC.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(12px,2vw,28px);padding-top:clamp(22px,2.4vw,32px);border-top:1px solid rgba(255,255,255,.12);animation:rise .9s cubic-bezier(.16,1,.3,1) both;animation-delay:.24s">
+        <a href="#noticias" data-goto="noticias" onClick="{{ goTo }}" style="white-space:nowrap;display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#ffffff;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#fc4425;background:rgba(252,68,37,.12)"><span style="font-weight:600;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.45)">01</span>Noticias</a>
+        <a href="#agenda" data-goto="agenda" onClick="{{ goTo }}" style="white-space:nowrap;display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;color:#ffffff;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#fc4425;background:rgba(252,68,37,.12)"><span style="font-weight:600;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.45)">02</span>Agenda</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="noticias" data-screen-label="Noticias" style="background:#ffffff;padding:clamp(64px,8vw,120px) clamp(20px,5vw,80px)">
+    <div style="max-width:1500px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px">
+        <div>
+          <p style="margin:0 0 16px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a58a80">Actualidad</p>
+          <h2 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(36px,4.4vw,64px);line-height:1;letter-spacing:-.025em;color:#1e1728">Noticias</h2>
+        </div>
+        <div role="group" aria-label="Filtrar publicaciones" style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="3">
+            <button data-f="{{ f.label }}" onClick="{{ pickFilter }}" aria-pressed="{{ f.pressed }}" style="display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;border:1px solid {{ f.border }};background:{{ f.bg }};color:{{ f.color }};font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:500;font-size:14px;cursor:pointer;transition:background .3s ease,color .3s ease,border-color .3s ease" style-hover="border-color:#1e1728">{{ f.label }}<span style="font-size:12px;opacity:.55">{{ f.count }}</span></button>
+          </sc-for>
+        </div>
+      </div>
+
+      <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ true }}">
+        <a data-hcard="" href="{{ featured.href }}" style="position:relative;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));margin-top:clamp(36px,4.5vw,64px);border:1px solid #e6e2ee;color:#1e1728;background:#ffffff">
+          <span data-hbar="" style="position:absolute;top:0;left:0;width:2px;height:100%;background:#fc4425;transform:scaleY(0);transform-origin:top;transition:transform .5s ease-out;pointer-events:none;z-index:2"></span>
+          <span style="display:block;position:relative;overflow:hidden;min-height:clamp(260px,30vw,460px)">
+            <span data-hzoom="" style="position:absolute;inset:0;background-image:{{ featured.bg }};background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.16,1,.3,1)"></span>
+          </span>
+          <span style="display:flex;flex-direction:column;padding:clamp(26px,3.2vw,56px)">
+            <span style="display:inline-flex;align-self:flex-start;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.16em;color:#ffffff;background:#fc4425;border-radius:999px;padding:6px 12px">DESTACADA</span>
+            <span style="display:block;margin-top:clamp(20px,2.4vw,32px);font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;color:#a58a80">{{ featured.kicker }}</span>
+            <span data-htitle="" style="display:block;margin-top:14px;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(26px,2.6vw,42px);line-height:1.1;letter-spacing:-.022em;color:#1e1728;text-wrap:pretty;transition:color .35s ease">{{ featured.title }}</span>
+            <span style="margin-top:auto;padding-top:clamp(24px,3vw,40px);display:inline-flex;align-items:center;gap:10px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;color:#1e1728">Leer noticia<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fc4425" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>
+          </span>
+        </a>
+      </sc-if>
+
+      <sc-if value="{{ hasRest }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:1px;background:#e6e2ee;border:1px solid #e6e2ee;border-top:none">
+          <sc-for list="{{ rest }}" as="item" hint-placeholder-count="2">
+            <a data-hcard="" href="{{ item.href }}" style="position:relative;overflow:hidden;display:flex;flex-direction:column;background:#ffffff;padding:clamp(18px,2vw,28px);color:#1e1728">
+              <span data-hbar="" style="position:absolute;top:0;left:0;width:2px;height:100%;background:#fc4425;transform:scaleY(0);transform-origin:top;transition:transform .5s ease-out;pointer-events:none;z-index:1"></span>
+              <span style="display:block;position:relative;overflow:hidden;aspect-ratio:16/10;border:1px solid #e6e2ee">
+                <span data-hzoom="" style="position:absolute;inset:0;background-image:{{ item.bg }};background-size:cover;background-position:center;transition:transform .6s cubic-bezier(.16,1,.3,1)"></span>
+              </span>
+              <span style="position:relative;display:block;height:1px;background:#e6e2ee;overflow:hidden;margin-top:clamp(18px,2vw,26px)"><span data-hfill="" style="position:absolute;top:0;bottom:0;left:0;width:0%;background:#fc4425;transition:width .5s ease-out"></span></span>
+              <span style="display:block;padding:18px 0 0">
+                <span style="display:block;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;color:#a58a80">{{ item.kicker }}</span>
+                <span data-htitle="" style="display:block;margin-top:12px;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(18px,1.5vw,23px);line-height:1.22;letter-spacing:-.015em;color:#1e1728;text-wrap:pretty;transition:color .35s ease">{{ item.title }}</span>
+              </span>
+            </a>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;justify-content:center;margin-top:clamp(28px,3.4vw,48px)">
+          <button data-cta="" onClick="{{ loadMore }}" style="position:relative;overflow:hidden;display:inline-flex;align-items:center;background:transparent;color:#1e1728;border:1px solid rgba(30,23,40,.22);font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;padding:15px 28px;border-radius:999px;cursor:pointer;transition:color .35s ease,border-color .4s ease"><span data-cta-sweep="" style="position:absolute;inset:0;background:#fc4425;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none"></span><span style="position:relative;z-index:1">Cargar más publicaciones</span></button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ noItems }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:clamp(36px,4.5vw,64px);border:1px dashed #cfc6dc;padding:clamp(48px,7vw,104px) clamp(24px,4vw,64px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;animation:rise .6s cubic-bezier(.16,1,.3,1) both">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#654a9e" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M3 15h6M3 18h4M3 12h8"></path></svg>
+          <h3 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,2vw,28px);letter-spacing:-.015em;color:#1e1728">{{ emptyTitle }}</h3>
+          <p style="margin:0;max-width:44ch;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:1.6;color:#6a6278">Pronto publicaremos contenidos en esta categoría. Mientras tanto, revisa las últimas publicaciones del Centro.</p>
+          <button onClick="{{ showAll }}" style="margin-top:8px;display:inline-flex;align-items:center;background:transparent;color:#1e1728;border:1px solid rgba(30,23,40,.22);font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;padding:14px 24px;border-radius:999px;cursor:pointer;transition:border-color .3s ease,background .3s ease,color .3s ease" style-hover="background:#1e1728;border-color:#1e1728;color:#ffffff">Ver todas las publicaciones</button>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section id="agenda" data-screen-label="Agenda" style="background:#f6f5f9;padding:clamp(64px,8vw,120px) clamp(20px,5vw,80px)">
+    <div style="max-width:1500px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px">
+        <div>
+          <p style="margin:0 0 16px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a58a80">Agenda</p>
+          <h2 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(36px,4.4vw,64px);line-height:1;letter-spacing:-.025em;color:#1e1728">Próximos eventos</h2>
+        </div>
+      </div>
+
+      <sc-if value="{{ hasEvents }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:clamp(36px,4.5vw,64px);border-top:1px solid #1e1728">
+          <sc-for list="{{ events }}" as="ev" hint-placeholder-count="3">
+            <article data-hcard="" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(18px,2.6vw,44px);align-items:center;padding:clamp(22px,2.6vw,36px) 0;border-bottom:1px solid #e2ddec">
+              <span data-hbar="" style="position:absolute;top:0;left:calc(-1 * clamp(10px,1.4vw,20px));width:2px;height:100%;background:#fc4425;transform:scaleY(0);transform-origin:top;transition:transform .5s ease-out;pointer-events:none"></span>
+              <div style="display:flex;align-items:center;gap:clamp(18px,2vw,28px)">
+                <div style="flex:0 0 auto;width:clamp(84px,7vw,104px);aspect-ratio:1;border:1px solid #d9d2e4;background:#ffffff;display:flex;flex-direction:column;align-items:center;justify-content:center">
+                  <span style="font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(32px,3vw,44px);line-height:1;letter-spacing:-.03em;color:#1e1728">{{ ev.day }}</span>
+                  <span style="margin-top:6px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.18em;color:#a58a80">{{ ev.month }}</span>
+                </div>
+                <div style="position:relative;flex:1 1 auto;aspect-ratio:16/10;max-width:220px;border:1px solid #d9d2e4;background:#ffffff"><img src="{{ ev.img }}" alt="{{ ev.title }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block"></div>
+              </div>
+              <div style="min-width:0">
+                <span style="display:inline-flex;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#654a9e;border:1px solid rgba(101,74,158,.35);border-radius:999px;padding:5px 11px">{{ ev.type }}</span>
+                <h3 data-htitle="" style="margin:14px 0 0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:clamp(22px,2vw,30px);line-height:1.15;letter-spacing:-.018em;color:#1e1728;transition:color .35s ease">{{ ev.title }}</h3>
+                <div style="display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:12px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:14px;color:#6a6278">
+                  <span style="display:inline-flex;align-items:center;gap:8px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>{{ ev.time }}</span>
+                  <span style="display:inline-flex;align-items:center;gap:8px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 12-8 12s-8-7-8-12a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>{{ ev.place }}</span>
+                </div>
+              </div>
+              <div style="display:flex;justify-content:flex-end">
+                <a data-cta="" href="#agenda" style="position:relative;overflow:hidden;display:inline-flex;align-items:center;background:transparent;color:#1e1728;border:1px solid rgba(30,23,40,.22);font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;padding:13px 22px;border-radius:999px;transition:color .35s ease,border-color .4s ease"><span data-cta-sweep="" style="position:absolute;inset:0;background:#fc4425;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none"></span><span style="position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px">Inscribirme<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ noEvents }}" hint-placeholder-val="{{ false }}">
+        <div style="position:relative;margin-top:clamp(36px,4.5vw,64px);border:1px solid #d9d2e4;background:#ffffff;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:0;animation:rise .6s cubic-bezier(.16,1,.3,1) both">
+          <div style="display:flex;align-items:center;justify-content:center;padding:clamp(40px,5vw,72px);border-right:1px solid #ece8f1;background:#fbfafc">
+            <div style="position:relative;width:clamp(120px,11vw,160px);aspect-ratio:1;border:1px solid #d9d2e4;background:#ffffff;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <span aria-hidden="true" style="position:absolute;top:-1px;left:-1px;right:-1px;height:clamp(26px,2.4vw,34px);background:#1e1728"></span>
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#a58a80" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="margin-top:clamp(20px,2vw,28px)"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path><path d="m9.5 14.5 5 5M14.5 14.5l-5 5"></path></svg>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:16px;padding:clamp(32px,4vw,64px)">
+            <h3 style="margin:0;font-family:'Euclid Flex','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:clamp(26px,2.6vw,38px);line-height:1.08;letter-spacing:-.022em;color:#1e1728">No hay eventos próximos</h3>
+            <p style="margin:0;max-width:46ch;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(16px,1.2vw,18px);line-height:1.6;color:#4a4256;text-wrap:pretty">Estamos preparando nuevas actividades. Suscríbete a nuestro newsletter para enterarte primero de seminarios, talleres y convocatorias.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px">
+              <a data-cta="" href="#newsletter" onClick="{{ toNewsletter }}" style="position:relative;overflow:hidden;display:inline-flex;align-items:center;background:#1e1728;color:#ffffff;border:1px solid #1e1728;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;padding:14px 24px;border-radius:999px;transition:color .35s ease,border-color .4s ease"><span data-cta-sweep="" style="position:absolute;inset:0;background:#fc4425;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none"></span><span style="position:relative;z-index:1">Suscribirme al newsletter</span></a>
+              <a href="#noticias" data-goto="noticias" onClick="{{ goTo }}" style="white-space:nowrap;display:inline-flex;align-items:center;background:transparent;color:#1e1728;border:1px solid rgba(30,23,40,.22);font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:14px;padding:14px 24px;border-radius:999px;transition:border-color .3s ease" style-hover="border-color:#1e1728">Ver noticias</a>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <footer style="background:#16111f;color:#ffffff;padding:clamp(20px,3vw,44px) clamp(16px,3.5vw,48px) clamp(24px,3vw,44px)">
+    <div style="position:relative;overflow:hidden;border-radius:clamp(18px,2vw,28px);border:1px solid rgba(255,255,255,.07);background:#1a1424">
+      <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,3vw,48px);align-items:center;padding:clamp(28px,3.4vw,52px) clamp(22px,3vw,56px);border-bottom:1px solid rgba(255,255,255,.08)">
+        <div>
+          <p style="margin:0 0 12px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42)">Newsletter</p>
+          <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:clamp(15px,1.2vw,18px);line-height:1.55;color:rgba(255,255,255,.82);max-width:34ch">Noticias del centro, convocatorias abiertas y avances de nuestras líneas de investigación.</p>
+        </div>
+        <form onSubmit="{{ onSubscribe }}" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end">
+          <span style="position:relative;display:flex;align-items:center;flex:1 1 240px;max-width:360px">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:22px"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 6.5 8.5 6 8.5-6"></path></svg>
+            <input type="email" placeholder="tu@correo.cl" style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:999px;color:#ffffff;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;padding:17px 24px 17px 52px;transition:border-color .3s ease,background .3s ease" style-focus="border-color:rgba(252,68,37,.7);background:rgba(255,255,255,.08)">
+          </span>
+          <button data-cta="" type="submit" style="position:relative;overflow:hidden;background:#ffffff;color:#1e1728;border:1px solid #ffffff;border-radius:999px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:15px;padding:17px 32px;cursor:pointer;transition:color .35s ease,border-color .4s ease"><span data-cta-sweep="" style="position:absolute;inset:0;background:#fc4425;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);pointer-events:none"></span><span style="position:relative;z-index:1">{{ subscribeLabel }}</span></button>
+        </form>
+      </div>
+      <div style="position:relative;display:flex;flex-wrap:wrap;gap:clamp(28px,3.4vw,56px);padding:clamp(32px,4vw,64px) clamp(22px,3vw,56px)">
+        <div style="flex:1 1 320px;min-width:0;max-width:460px">
+          <div style="display:flex;align-items:center;gap:clamp(12px,1.6vw,22px);flex-wrap:nowrap;min-width:0">
+            <img src="assets/usach-white.png" alt="Universidad de Santiago de Chile" style="flex:0 1 auto;min-width:0;width:auto;height:auto;max-height:52px;max-width:48%;display:block;opacity:.85">
+            <span style="flex:0 0 1px;width:1px;height:44px;background:rgba(255,255,255,.16);display:block"></span>
+            <img src="assets/anid-white.png" alt="ANID · Agencia Nacional de Investigación y Desarrollo" style="flex:0 1 auto;min-width:0;width:auto;height:auto;max-height:68px;max-width:26%;display:block;opacity:.8">
+            <img src="assets/ministerio-white.png" alt="Ministerio de Ciencia, Tecnología, Conocimiento e Innovación · Gobierno de Chile" style="flex:0 1 auto;min-width:0;width:auto;height:auto;max-height:68px;max-width:26%;display:block;opacity:.8">
+          </div>
+          <p style="margin:26px 0 0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.6;color:rgba(255,255,255,.6);max-width:38ch">Centro de Innovación en Tecnología y Diseño de Materiales para el Entorno Construido.</p>
+        </div>
+        <div style="flex:1 1 170px;min-width:0">
+          <p style="margin:0 0 22px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42)">Áreas</p>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <a href="que-hacemos.html#investigacion" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Investigación</a>
+            <a href="que-hacemos.html#transferencia" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Transferencia tecnológica</a>
+            <a href="que-hacemos.html#laboratorios" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Laboratorios</a>
+            <a href="que-hacemos.html#servicios" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Servicios</a>
+            <a href="index.html#proyectos" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Proyectos</a>
+          </div>
+        </div>
+        <div style="flex:1 1 170px;min-width:0">
+          <p style="margin:0 0 22px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42)">Centro</p>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <a href="nosotros.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Nosotros</a>
+            <a href="noticias-y-eventos.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Noticias y Eventos</a>
+            <a href="contacto.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Contacto</a>
+            <a href="index.html" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff">Transparencia</a>
+          </div>
+        </div>
+        <div style="flex:1 1 190px;min-width:0">
+          <p style="margin:0 0 22px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.42)">Conecta</p>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;gap:12px;margin-bottom:6px">
+              <a href="https://www.instagram.com/centro.cimac/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:999px;border:1px solid rgba(255,255,255,.28);color:#ffffff;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#ffffff;border-color:#ffffff;color:#16111f"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg></a>
+              <a href="https://www.linkedin.com/in/centro-cimac/" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:999px;border:1px solid rgba(255,255,255,.28);color:#ffffff;transition:background .3s ease,border-color .3s ease,color .3s ease" style-hover="background:#ffffff;border-color:#ffffff;color:#16111f"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M7.5 10.5V17M7.5 7.2v.1M11.5 17v-3.6a2.4 2.4 0 0 1 4.8 0V17"></path></svg></a>
+            </div>
+            <a href="mailto:contacto.cimac@usach.cl" style="display:flex;align-items:center;gap:11px;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:15px;color:rgba(255,255,255,.72)" style-hover="color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3.5 6.5 8.5 6 8.5-6"></path></svg>contacto.cimac@usach.cl</a>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;display:flex;flex-wrap:wrap;gap:14px 28px;justify-content:space-between;align-items:center;padding:clamp(20px,2.2vw,28px) clamp(22px,3vw,56px);border-top:1px solid rgba(255,255,255,.08)">
+        <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)">© 2026 CIMAC · Universidad de Santiago de Chile</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center">
+          <a href="#" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)" style-hover="color:#ffffff">Términos y condiciones</a>
+          <a href="#" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)" style-hover="color:#ffffff">Política de privacidad</a>
+          <a href="mailto:contacto.cimac@usach.cl" style="font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)" style-hover="color:#ffffff">contacto.cimac@usach.cl</a>
+          <p style="margin:0;font-family:'Campton','Helvetica Neue',Arial,sans-serif;font-size:13px;color:rgba(255,255,255,.42)">Desarrollado por <a href="https://deltadigital.cl" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7)" style-hover="color:#fc4425">Delta Digital</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ showWhatsapp }}" hint-placeholder-val="{{ true }}">
+    <a href="https://wa.me/56200000000" target="_blank" rel="noopener" aria-label="WhatsApp" style="position:fixed;right:clamp(16px,2.4vw,32px);bottom:clamp(16px,2.4vw,32px);z-index:55;width:50px;height:50px;border-radius:13px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(252,68,37,.34);transition:transform .35s cubic-bezier(.16,1,.3,1)" style-hover="transform:translateY(-4px) scale(1.04)">
+      <img src="assets/whatsapp.png" alt="" width="50" height="50" style="display:block;width:100%;height:100%;object-fit:cover">
+    </a>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;agenda&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Con eventos&quot;,&quot;Sin eventos&quot;],&quot;default&quot;:&quot;Con eventos&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estados&quot;},&quot;showWhatsapp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
+const NEWS = [{"id":1,"ts":46175,"date":"02/06/26","type":"Noticia","title":"CIMAC constituye su Consejo Directivo y proyecta su estrategia de vinculación con la industria","img":"assets/noticias/01.jpg"},{"id":2,"ts":46129,"date":"17/04/26","type":"Noticia","title":"Investigadores del CIMAC se adjudican proyectos Fondecyt 2026 para fortalecer la investigación en salud, sostenibilidad y entorno construido","img":"assets/noticias/02.jpg"},{"id":3,"ts":46121,"date":"09/04/26","type":"Noticia","title":"Académicos de la Usach representarán a CIMAC en la conferencia internacional sobre gestión tecnológica en Egipto","img":"assets/noticias/03.jpg"},{"id":4,"ts":46084,"date":"03/03/26","type":"Columna de opinión","title":"Economía circular en Chile: del territorio al desarrollo tecnológico","img":"assets/noticias/04.jpg"},{"id":5,"ts":46133,"date":"21/04/26","type":"Columna de opinión","title":"De la mitigación del ruido al diseño de paisajes sonoros saludables","img":"assets/noticias/05.jpg"},{"id":6,"ts":46185,"date":"12/06/26","type":"Noticia","title":"Investigadora de CIMAC lideró workshop sobre diseños biobasados","img":"assets/noticias/06.jpg"},{"id":7,"ts":46160,"date":"18/05/26","type":"Noticia","title":"Inspirado en humedales: proyecto vinculado a CIMAC apuesta por soluciones basadas en la naturaleza para el tratamiento de aguas residuales","img":"assets/noticias/07.jpg"},{"id":8,"ts":46183,"date":"10/06/26","type":"Noticia","title":"Innovación en vivienda sustentable: la experiencia de la Dra. Camila Burgos que aporta al trabajo del Centro CIMAC en valorización de recursos","img":"assets/noticias/08.jpg"},{"id":9,"ts":46184,"date":"11/06/26","type":"Noticia","title":"Se expande el equipo CIMAC: mediante la incorporación de dos nuevas profesionales de la Arquitectura y el Diseño Industrial","img":"assets/noticias/09.jpg"},{"id":10,"ts":46188,"date":"15/06/26","type":"Noticia","title":"CIMAC participa en jornada sectorial para actualizar la Estrategia de Economía Circular impulsada por la CChC","img":"assets/noticias/10.jpg"},{"id":11,"ts":0,"date":"","type":"Noticia","title":"CIMAC impulsa el uso de biomateriales en arquitectura y diseño en congreso internacional realizado en Panamá","img":"assets/noticias/11.jpg"},{"id":12,"ts":46203,"date":"30/06/26","type":"Noticia","title":"Investigador de la Línea 2 de CIMAC participó en Cumbre Global del sector textil donde se abordó el aporte del diseño con biomateriales a la economía circular","img":"assets/noticias/12.jpg"},{"id":13,"ts":46224,"date":"21/07/26","type":"Noticia","title":"Investigador de CIMAC presentó avances en biomateriales y valorización de lignina en congreso internacional CIADICYP 2026 realizado en Austria","img":"assets/noticias/13.jpg"},{"id":14,"ts":46254,"date":"20/08/26","type":"Noticia","title":"Investigadora de CIMAC participa en congreso internacional de arquitectura sostenible en Costa Rica","img":"assets/noticias/14.jpg"},{"id":15,"ts":46256,"date":"22/08/26","type":"Noticia","title":"CIMAC aporta capacidades científicas y tecnológicas para fortalecer la Estrategia de Economía Circular en Construcción al 2035","img":"assets/noticias/15.jpg"},{"id":16,"ts":46203,"date":"30/06/26","type":"Noticia","title":"CIMAC participará en Edifica 2026 con foco en innovación y economía circular para el entorno construido","img":"assets/noticias/16.jpg"},{"id":17,"ts":46339,"date":"13/11/26","type":"Noticia","title":"Investigadora de CIMAC desarrolla metodología para acercar el reciclaje de plásticos a talleres y comunidades durante su magíster en Francia","img":"assets/noticias/17.jpg"},{"id":18,"ts":46322,"date":"27/10/26","type":"Noticia","title":"Investigadora de CIMAC participa en coloquio internacional sobre paisaje sonoro y bienestar urbano en México 2026","img":"assets/noticias/18.jpg"},{"id":19,"ts":46336,"date":"10/11/26","type":"Noticia","title":"CIMAC participa en Campus América 2026 con investigación sobre biomateriales y nuevas transiciones materiales","img":"assets/noticias/19.jpg"}].sort((a, b) => (b.ts || 0) - (a.ts || 0)).map(n => ({ ...n, typeUp: n.type.toUpperCase(), kicker: (n.date ? n.date + ' · ' : '') + n.type.toUpperCase(), bg: "url('" + n.img + "')", href: 'noticia.html?n=' + n.id }));
+const FILTERS = ['Todas', 'Noticia', 'Columna de opinión'];
+const EVENTS = [
+  { id: 'ev-1', day: '03', month: 'DIC', type: 'Seminario', title: 'Materiales secundarios en la construcción: avances de la Ley REP', time: '09:30 – 12:30', place: 'Aula Magna, Usach', img: 'assets/noticias/15.jpg' },
+  { id: 'ev-2', day: '10', month: 'DIC', type: 'Taller', title: 'Biofabricación con residuos agroindustriales', time: '15:00 – 18:00', place: 'Laboratorio CIMAC, UTEM', img: 'assets/noticias/06.jpg' },
+  { id: 'ev-3', day: '14', month: 'ENE', type: 'Charla', title: 'Logística circular para la industria del reciclaje', time: '11:00 – 12:30', place: 'Online · Zoom', img: 'assets/noticias/10.jpg' }
+];
+
+class Component extends DCLogic {
+  state = {
+    menu: false,
+    subscribed: false,
+    filter: 'Todas',
+    shown: 10,
+    isDesktop: typeof window !== 'undefined' ? window.innerWidth >= 1000 : true
+  };
+
+  constructor(props) {
+    super(props);
+    this.root = React.createRef();
+  }
+
+  bindHovers() {
+    const root = this.root.current;
+    if (!root) return;
+    root.querySelectorAll('[data-cta]').forEach(el => {
+      if (el.dataset.bound) return;
+      el.dataset.bound = '1';
+      const sweep = el.querySelector('[data-cta-sweep]');
+      const c = el.style.color, b = el.style.borderColor;
+      const paint = on => {
+        if (sweep) { sweep.style.transformOrigin = on ? 'left' : 'right'; sweep.style.transform = on ? 'scaleX(1)' : 'scaleX(0)'; }
+        el.style.color = on ? '#ffffff' : c;
+        el.style.borderColor = on ? '#fc4425' : b;
+      };
+      ['mouseenter', 'focus'].forEach(e => el.addEventListener(e, () => paint(true)));
+      ['mouseleave', 'blur'].forEach(e => el.addEventListener(e, () => paint(false)));
+    });
+    root.querySelectorAll('[data-hcard]').forEach(card => {
+      if (card.dataset.bound) return;
+      card.dataset.bound = '1';
+      const q = s => card.querySelector(s);
+      const bar = q('[data-hbar]'), fill = q('[data-hfill]'), num = q('[data-hnum]'), title = q('[data-htitle]'), zoom = q('[data-hzoom]');
+      const numBase = num && num.style.color, titleBase = title && title.style.color;
+      const paint = on => {
+        if (bar) bar.style.transform = on ? 'scaleY(1)' : 'scaleY(0)';
+        if (fill) fill.style.width = on ? '100%' : '0%';
+        if (num) num.style.color = on ? '#fc4425' : numBase;
+        if (title) title.style.color = on ? '#fc4425' : titleBase;
+        if (zoom) zoom.style.transform = on ? 'scale(1.06)' : 'scale(1)';
+      };
+      card.addEventListener('mouseenter', () => paint(true));
+      card.addEventListener('mouseleave', () => paint(false));
+    });
+  }
+
+  setupReveal() {
+    const root = this.root.current;
+    if (!root || !('IntersectionObserver' in window)) return;
+    if (!this.io) this.io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; this.io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    root.querySelectorAll('[data-reveal]').forEach(el => {
+      if (el.dataset.rv) return;
+      el.dataset.rv = '1';
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1)';
+      this.io.observe(el);
+    });
+  }
+
+  tick = () => {
+    const root = this.root.current;
+    if (root) {
+      const hero = root.querySelector('[data-hero]');
+      const header = root.querySelector('[data-header]');
+      if (hero && header) {
+        const solid = hero.getBoundingClientRect().top < -40;
+        if (solid !== this.solid) {
+          this.solid = solid;
+          header.style.background = solid ? 'rgba(22,17,31,.92)' : 'transparent';
+          header.style.backdropFilter = solid ? 'saturate(140%) blur(14px)' : 'none';
+          header.style.borderBottomColor = solid ? 'rgba(255,255,255,.1)' : 'transparent';
+        }
+      }
+    }
+    this.raf = requestAnimationFrame(this.tick);
+  };
+
+  initLenis(tries) {
+    const L = window.Lenis || (window.lenis && window.lenis.default);
+    if (!L) { if (tries < 40) this.lenisTo = setTimeout(() => this.initLenis(tries + 1), 100); return; }
+    if (this.lenis) return;
+    const opts = { duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true };
+    const bodyScrolls = document.body.scrollHeight > document.body.clientHeight + 1 && /auto|scroll/.test(getComputedStyle(document.body).overflowY);
+    if (bodyScrolls) { opts.wrapper = document.body; opts.content = document.body; }
+    this.lenis = new L(opts);
+    const raf = t => { if (!this.lenis) return; this.lenis.raf(t); this.lenisRaf = requestAnimationFrame(raf); };
+    this.lenisRaf = requestAnimationFrame(raf);
+  }
+
+  scrollToId(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (this.lenis) this.lenis.scrollTo(el, { offset: -70 });
+    else window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
+  }
+
+  componentDidMount() {
+    this.bindHovers();
+    this.setupReveal();
+    this.raf = requestAnimationFrame(this.tick);
+    this.initLenis(0);
+    const hash = window.location.hash.slice(1);
+    if (hash) this.hashTo = setTimeout(() => this.scrollToId(hash), 500);
+    this.onResize = () => {
+      const d = window.innerWidth >= 1000;
+      if (d !== this.state.isDesktop) this.setState({ isDesktop: d });
+    };
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentDidUpdate() { this.bindHovers(); this.setupReveal(); if (this.lenis) requestAnimationFrame(() => { if (this.lenis) this.lenis.resize(); }); }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    if (this.lenisRaf) cancelAnimationFrame(this.lenisRaf);
+    clearTimeout(this.lenisTo);
+    clearTimeout(this.hashTo);
+    if (this.io) this.io.disconnect();
+    window.removeEventListener('resize', this.onResize);
+    if (this.lenis) { this.lenis.destroy(); this.lenis = null; }
+  }
+
+  pageVals() {
+    const f = this.state.filter;
+    const items = NEWS.filter(n => f === 'Todas' || n.type === f);
+    const withEvents = (this.props.agenda ?? 'Con eventos') === 'Con eventos';
+    return {
+      filters: FILTERS.map(l => {
+        const on = l === f;
+        return { label: l, count: l === 'Todas' ? NEWS.length : NEWS.filter(n => n.type === l).length, bg: on ? '#1e1728' : 'transparent', color: on ? '#ffffff' : '#1e1728', border: on ? '#1e1728' : 'rgba(30,23,40,.2)', pressed: on ? 'true' : 'false' };
+      }),
+      pickFilter: e => this.setState({ filter: e.currentTarget.dataset.f, shown: 10 }),
+      featured: items[0] || NEWS[0],
+      rest: items.slice(1, this.state.shown),
+      hasMore: items.length > this.state.shown,
+      loadMore: () => this.setState(s => ({ shown: s.shown + 9 })),
+      hasItems: items.length > 0,
+      hasRest: items.length > 1,
+      noItems: items.length === 0,
+      emptyTitle: f === 'Columna de opinión' ? 'Aún no hay columnas de opinión' : 'Sin publicaciones',
+      hasEvents: withEvents,
+      noEvents: !withEvents,
+      events: EVENTS,
+      showAll: () => this.setState({ filter: 'Todas' }),
+      toNewsletter: e => {
+        e.preventDefault();
+        const el = this.root.current && this.root.current.querySelector('footer');
+        if (!el) return;
+        if (this.lenis) this.lenis.scrollTo(el, { offset: -40 }); else window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 40, behavior: 'smooth' });
+        const inp = el.querySelector('input[type=email]');
+        if (inp) setTimeout(() => inp.focus({ preventScroll: true }), 900);
+      }
+    };
+  }
+
+  renderVals() {
+    return Object.assign({
+      root: this.root,
+      menu: this.state.menu,
+      isDesktop: this.state.isDesktop,
+      showWhatsapp: this.props.showWhatsapp !== false,
+      subscribeLabel: this.state.subscribed ? 'Suscrito' : 'Suscribirme',
+      toggleMenu: () => this.setState(st => ({ menu: !st.menu })),
+      goTo: e => { e.preventDefault(); this.scrollToId(e.currentTarget.dataset.goto); },
+      onSubscribe: e => { e.preventDefault(); this.setState({ subscribed: true }); }
+    }, this.pageVals());
+  }
+}
+</script>
+</body>
+</html>
